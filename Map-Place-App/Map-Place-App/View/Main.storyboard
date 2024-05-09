@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qiH-8o-LMj">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qiH-8o-LMj">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,41 +17,48 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location Search" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ozw-jx-18U">
-                                <rect key="frame" x="134.66666666666666" y="450" width="123.66666666666666" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ebL-cq-XzJ">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ebL-cq-XzJ">
                                 <rect key="frame" x="139" y="478" width="114" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="114" id="Cy8-mK-rR9"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="SearchView"/>
                                 <connections>
                                     <segue destination="0td-rP-eEp" kind="push" id="gA2-S1-iqK"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wog-OO-bVi">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wog-OO-bVi">
                                 <rect key="frame" x="131" y="549" width="130" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="130" id="yS5-VM-WVw"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="PlaceListView"/>
                                 <connections>
                                     <segue destination="IW0-Tb-KLc" kind="show" id="IW4-dw-JP5"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location Search" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ozw-jx-18U">
+                                <rect key="frame" x="135" y="342" width="123.66666666666669" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="123.67" id="9PX-Qq-oAP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="tUz-EW-dJB"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="ozw-jx-18U" firstAttribute="centerX" secondItem="sIj-iK-58E" secondAttribute="centerX" id="2XL-tJ-7t5"/>
-                            <constraint firstItem="ozw-jx-18U" firstAttribute="centerX" secondItem="ebL-cq-XzJ" secondAttribute="centerX" id="6o1-ss-Row"/>
-                            <constraint firstItem="ebL-cq-XzJ" firstAttribute="leading" secondItem="tUz-EW-dJB" secondAttribute="leading" constant="139" id="8Zb-KJ-BCT"/>
-                            <constraint firstItem="Wog-OO-bVi" firstAttribute="leading" secondItem="tUz-EW-dJB" secondAttribute="leading" constant="131" id="N4o-4j-9ml"/>
-                            <constraint firstItem="ebL-cq-XzJ" firstAttribute="centerX" secondItem="Wog-OO-bVi" secondAttribute="centerX" id="efj-YP-5Ng"/>
-                            <constraint firstItem="ozw-jx-18U" firstAttribute="top" secondItem="tUz-EW-dJB" secondAttribute="top" constant="347" id="heI-eU-Zoy"/>
-                            <constraint firstItem="Wog-OO-bVi" firstAttribute="top" secondItem="ebL-cq-XzJ" secondAttribute="bottom" constant="36" id="ieE-aU-n6x"/>
-                            <constraint firstItem="ozw-jx-18U" firstAttribute="leading" secondItem="tUz-EW-dJB" secondAttribute="leading" constant="134.66666666666663" id="l5v-MJ-Yoc"/>
-                            <constraint firstItem="ebL-cq-XzJ" firstAttribute="top" secondItem="ozw-jx-18U" secondAttribute="bottom" constant="7" id="sKn-Kn-9xx"/>
+                            <constraint firstItem="ebL-cq-XzJ" firstAttribute="top" secondItem="ozw-jx-18U" secondAttribute="bottom" constant="115" id="Bnq-Cc-goe"/>
+                            <constraint firstItem="ebL-cq-XzJ" firstAttribute="leading" secondItem="tUz-EW-dJB" secondAttribute="leading" constant="139" id="CG8-bK-AUX"/>
+                            <constraint firstItem="Wog-OO-bVi" firstAttribute="leading" secondItem="tUz-EW-dJB" secondAttribute="leading" constant="131" id="FZe-tY-ejC"/>
+                            <constraint firstItem="tUz-EW-dJB" firstAttribute="bottom" secondItem="Wog-OO-bVi" secondAttribute="bottom" constant="234" id="Lpq-1l-TRZ"/>
+                            <constraint firstItem="Wog-OO-bVi" firstAttribute="top" secondItem="ebL-cq-XzJ" secondAttribute="bottom" constant="36" id="NmX-EP-Qx6"/>
+                            <constraint firstItem="ozw-jx-18U" firstAttribute="leading" secondItem="tUz-EW-dJB" secondAttribute="leading" constant="135" id="r7U-yl-PqF"/>
+                            <constraint firstItem="ozw-jx-18U" firstAttribute="top" secondItem="tUz-EW-dJB" secondAttribute="top" constant="239" id="xyr-c9-l5t"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ASl-6O-PPR"/>

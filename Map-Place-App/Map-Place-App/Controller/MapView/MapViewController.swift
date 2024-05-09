@@ -58,8 +58,11 @@ class MapViewController: UIViewController {
 
 extension MapViewController : UISearchBarDelegate {
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        print("")
-        self.navigationController?.pushViewController(LocationSelectionViewController(), animated: true)
+        print("button çalışıt")
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let searchViewController = storyboard.instantiateViewController(withIdentifier: "LocationSelectionViewController") as! LocationSelectionViewController
+
+        self.navigationController?.pushViewController(searchViewController, animated: true)
     }
 }
 
