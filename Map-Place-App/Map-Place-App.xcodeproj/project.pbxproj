@@ -18,11 +18,11 @@
 		A538462E2BEB90AB008C224E /* PlaceListDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A538462D2BEB90AB008C224E /* PlaceListDetailViewController.swift */; };
 		CD3699942BECCB2800AC17D8 /* CoreLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3699932BECCB2800AC17D8 /* CoreLocationManager.swift */; };
 		CD3699962BECCB2C00AC17D8 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3699952BECCB2C00AC17D8 /* ApiManager.swift */; };
-		CD3699982BECCB8300AC17D8 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3699972BECCB8300AC17D8 /* MapViewController.swift */; };
 		CD36999F2BECCB9E00AC17D8 /* SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD36999A2BECCB9E00AC17D8 /* SearchTableViewCell.xib */; };
 		CD3699A02BECCB9E00AC17D8 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD36999B2BECCB9E00AC17D8 /* SearchTableViewCell.swift */; };
-		CD3699A12BECCB9E00AC17D8 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD36999C2BECCB9E00AC17D8 /* SearchViewController.swift */; };
 		CD3699A22BECCB9E00AC17D8 /* SearchMenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD36999E2BECCB9E00AC17D8 /* SearchMenuModel.swift */; };
+		CD3699A42BECCDB700AC17D8 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3699A32BECCDB700AC17D8 /* SearchViewController.swift */; };
+		CD3699A62BECCE6300AC17D8 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3699A52BECCE6300AC17D8 /* MapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,11 +42,11 @@
 		A538462D2BEB90AB008C224E /* PlaceListDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceListDetailViewController.swift; sourceTree = "<group>"; };
 		CD3699932BECCB2800AC17D8 /* CoreLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreLocationManager.swift; sourceTree = "<group>"; };
 		CD3699952BECCB2C00AC17D8 /* ApiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
-		CD3699972BECCB8300AC17D8 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapViewController.swift; path = "../../../../../LocationSearch 20.42.02/Location-Search/View/Map/MapViewController.swift"; sourceTree = "<group>"; };
 		CD36999A2BECCB9E00AC17D8 /* SearchTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchTableViewCell.xib; sourceTree = "<group>"; };
 		CD36999B2BECCB9E00AC17D8 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
-		CD36999C2BECCB9E00AC17D8 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchViewController.swift; path = "../../../../../LocationSearch 20.42.02/Location-Search/View/Search/SearchViewController.swift"; sourceTree = "<group>"; };
 		CD36999E2BECCB9E00AC17D8 /* SearchMenuModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchMenuModel.swift; sourceTree = "<group>"; };
+		CD3699A32BECCDB700AC17D8 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		CD3699A52BECCE6300AC17D8 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,7 +158,7 @@
 		A538461F2BEB8CA4008C224E /* MapView */ = {
 			isa = PBXGroup;
 			children = (
-				CD3699972BECCB8300AC17D8 /* MapViewController.swift */,
+				CD3699A52BECCE6300AC17D8 /* MapViewController.swift */,
 			);
 			path = MapView;
 			sourceTree = "<group>";
@@ -166,8 +166,8 @@
 		A53846202BEB8CC0008C224E /* SearchView */ = {
 			isa = PBXGroup;
 			children = (
+				CD3699A32BECCDB700AC17D8 /* SearchViewController.swift */,
 				CD36999D2BECCB9E00AC17D8 /* Model */,
-				CD36999C2BECCB9E00AC17D8 /* SearchViewController.swift */,
 				CD3699992BECCB9E00AC17D8 /* View */,
 			);
 			path = SearchView;
@@ -323,14 +323,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD3699982BECCB8300AC17D8 /* MapViewController.swift in Sources */,
 				A538462E2BEB90AB008C224E /* PlaceListDetailViewController.swift in Sources */,
+				CD3699A42BECCDB700AC17D8 /* SearchViewController.swift in Sources */,
 				CD3699962BECCB2C00AC17D8 /* ApiManager.swift in Sources */,
 				CD3699A02BECCB9E00AC17D8 /* SearchTableViewCell.swift in Sources */,
 				CD3699942BECCB2800AC17D8 /* CoreLocationManager.swift in Sources */,
-				CD3699A12BECCB9E00AC17D8 /* SearchViewController.swift in Sources */,
 				CD3699A22BECCB9E00AC17D8 /* SearchMenuModel.swift in Sources */,
 				A53846082BEB8BEC008C224E /* ViewController.swift in Sources */,
+				CD3699A62BECCE6300AC17D8 /* MapViewController.swift in Sources */,
 				A538462C2BEB904C008C224E /* PlaceListViewController.swift in Sources */,
 				A53846042BEB8BEC008C224E /* AppDelegate.swift in Sources */,
 				A53846062BEB8BEC008C224E /* SceneDelegate.swift in Sources */,

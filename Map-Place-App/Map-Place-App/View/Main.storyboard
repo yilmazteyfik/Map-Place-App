@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location Search" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ozw-jx-18U">
-                                <rect key="frame" x="134.66666666666666" y="406" width="123.66666666666666" height="21"/>
+                                <rect key="frame" x="134.66666666666666" y="450" width="123.66666666666666" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -65,11 +65,11 @@
             <objects>
                 <viewController id="IW0-Tb-KLc" customClass="PlaceListDetailViewController" customModule="Map_Place_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="htx-Yd-WgZ">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Place List View" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5sH-1b-sTE">
-                                <rect key="frame" x="139" y="410.66666666666669" width="115" height="21"/>
+                                <rect key="frame" x="139" y="450" width="115" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -104,11 +104,11 @@
             <objects>
                 <viewController id="52k-rZ-IdI" customClass="PlaceListDetailViewController" customModule="Map_Place_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5Cl-Ac-L9p">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Place Detail View" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mom-e9-iC6">
-                                <rect key="frame" x="131" y="410.66666666666669" width="131" height="21"/>
+                                <rect key="frame" x="131" y="450" width="131" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -148,11 +148,11 @@
             <objects>
                 <viewController id="0td-rP-eEp" customClass="SearchViewController" customModule="Map_Place_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mDy-KG-bjL">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" placeholder="Enter location" translatesAutoresizingMaskIntoConstraints="NO" id="uDj-yE-EB8">
-                                <rect key="frame" x="8" y="15" width="377" height="44"/>
+                                <rect key="frame" x="8" y="118" width="377" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="ts8-x3-ceM"/>
                                 </constraints>
@@ -162,7 +162,7 @@
                                 </connections>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="USC-zx-K4O">
-                                <rect key="frame" x="0.0" y="80" width="393" height="762"/>
+                                <rect key="frame" x="0.0" y="183" width="393" height="762"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="762" id="DaY-Fu-d9a"/>
@@ -193,7 +193,7 @@
         <!--Map View Controller-->
         <scene sceneID="nHg-kz-WeG">
             <objects>
-                <viewController id="Xnb-5z-QQh" customClass="MapViewController" customModule="Location_Search" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Xnb-5z-QQh" customClass="MapViewController" customModule="Map_Place_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ltr-kO-zLQ">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -202,13 +202,13 @@
                                 <rect key="frame" x="0.0" y="103" width="393" height="715"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" id="Yay-ff-tpn">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="703"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="659"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <viewLayoutGuide key="safeArea" id="SaA-Uc-5hQ"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </view>
                                     <searchBar contentMode="redraw" placeholder="Enter location" translatesAutoresizingMaskIntoConstraints="NO" id="6Do-m9-0fI">
-                                        <rect key="frame" x="0.0" y="703" width="393" height="12"/>
+                                        <rect key="frame" x="0.0" y="659" width="393" height="56"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
                                             <outlet property="delegate" destination="Xnb-5z-QQh" id="9Ub-Ow-5MC"/>
@@ -230,6 +230,7 @@
                     <connections>
                         <outlet property="googleMapsView" destination="Yay-ff-tpn" id="Jr4-oz-Ydt"/>
                         <outlet property="searchBar" destination="6Do-m9-0fI" id="9q2-ay-r71"/>
+                        <segue destination="QLN-kS-PKz" kind="push" id="Y5T-yb-Zpv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v2D-ya-YKD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
