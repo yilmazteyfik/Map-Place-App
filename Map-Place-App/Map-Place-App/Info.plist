@@ -2,7 +2,14 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>UIApplicationSceneManifest</key>
+    <key>GoogleMapsAPI</key>
+    <string>AIzaSyD6dE4su6MOlP1f7fT0KpksHIwpURikgbM</string>
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+        <string>comgooglemaps</string>
+        <string>comgooglemaps-x-callback</string>
+    </array>
+    <key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
 		<false/>
@@ -21,5 +28,11 @@
 			</array>
 		</dict>
 	</dict>
+    <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+    <string>We need access your location</string>
+    <key>NSLocationAlwaysUsageDescription</key>
+    <string>We need access your location</string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>We need access your location</string>
 </dict>
 </plist>

@@ -1,45 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qiH-8o-LMj">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qiH-8o-LMj">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Map View Controller-->
-        <scene sceneID="QHk-gn-wOU">
-            <objects>
-                <viewController id="e48-Vz-D2U" customClass="MapViewController" customModule="Map_Place_App" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="jlS-8M-gDd" customClass="MapV">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="opy-zH-A1U">
-                                <rect key="frame" x="159" y="568" width="75" height="50"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Button"/>
-                                <connections>
-                                    <segue destination="QLN-kS-PKz" kind="push" id="OKl-Gl-DpD"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="50S-Bc-fJa"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="opy-zH-A1U" firstAttribute="centerX" secondItem="jlS-8M-gDd" secondAttribute="centerX" id="8ed-e2-rDU"/>
-                            <constraint firstItem="50S-Bc-fJa" firstAttribute="bottom" secondItem="opy-zH-A1U" secondAttribute="bottom" constant="200" id="Fqs-gQ-q9H"/>
-                            <constraint firstItem="opy-zH-A1U" firstAttribute="top" secondItem="50S-Bc-fJa" secondAttribute="top" constant="465" id="b1v-9j-efC"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="0VO-Ka-167"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hZF-Lb-fR5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-274.04580152671753" y="43.661971830985919"/>
-        </scene>
         <!--Location Selection View Controller-->
         <scene sceneID="ZUZ-bq-cvM">
             <objects>
@@ -49,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location Search" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ozw-jx-18U">
-                                <rect key="frame" x="134.66666666666666" y="450" width="123.66666666666666" height="21"/>
+                                <rect key="frame" x="134.66666666666666" y="406" width="123.66666666666666" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -96,11 +65,11 @@
             <objects>
                 <viewController id="IW0-Tb-KLc" customClass="PlaceListDetailViewController" customModule="Map_Place_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="htx-Yd-WgZ">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Place List View" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5sH-1b-sTE">
-                                <rect key="frame" x="139" y="450" width="115" height="21"/>
+                                <rect key="frame" x="139" y="410.66666666666669" width="115" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -135,11 +104,11 @@
             <objects>
                 <viewController id="52k-rZ-IdI" customClass="PlaceListDetailViewController" customModule="Map_Place_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5Cl-Ac-L9p">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Place Detail View" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mom-e9-iC6">
-                                <rect key="frame" x="131" y="450" width="131" height="21"/>
+                                <rect key="frame" x="131" y="410.66666666666669" width="131" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -167,7 +136,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="e48-Vz-D2U" kind="relationship" relationship="rootViewController" id="4aH-rd-Cis"/>
+                        <segue destination="Xnb-5z-QQh" kind="relationship" relationship="rootViewController" id="NjC-nq-aJc"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AUp-8R-mip" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -179,11 +148,11 @@
             <objects>
                 <viewController id="0td-rP-eEp" customClass="SearchViewController" customModule="Map_Place_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mDy-KG-bjL">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" placeholder="Enter location" translatesAutoresizingMaskIntoConstraints="NO" id="uDj-yE-EB8">
-                                <rect key="frame" x="8" y="118" width="377" height="44"/>
+                                <rect key="frame" x="8" y="15" width="377" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="ts8-x3-ceM"/>
                                 </constraints>
@@ -193,7 +162,7 @@
                                 </connections>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="USC-zx-K4O">
-                                <rect key="frame" x="0.0" y="183" width="393" height="762"/>
+                                <rect key="frame" x="0.0" y="80" width="393" height="762"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="762" id="DaY-Fu-d9a"/>
@@ -220,6 +189,52 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1ys-hS-NeX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1950.3816793893129" y="-272.53521126760563"/>
+        </scene>
+        <!--Map View Controller-->
+        <scene sceneID="nHg-kz-WeG">
+            <objects>
+                <viewController id="Xnb-5z-QQh" customClass="MapViewController" customModule="Location_Search" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ltr-kO-zLQ">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="swF-lI-P23">
+                                <rect key="frame" x="0.0" y="103" width="393" height="715"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" id="Yay-ff-tpn">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="703"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <viewLayoutGuide key="safeArea" id="SaA-Uc-5hQ"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </view>
+                                    <searchBar contentMode="redraw" placeholder="Enter location" translatesAutoresizingMaskIntoConstraints="NO" id="6Do-m9-0fI">
+                                        <rect key="frame" x="0.0" y="703" width="393" height="12"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="Xnb-5z-QQh" id="9Ub-Ow-5MC"/>
+                                        </connections>
+                                    </searchBar>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Ca0-Dj-SHJ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="swF-lI-P23" firstAttribute="leading" secondItem="Ca0-Dj-SHJ" secondAttribute="leading" id="7TH-M2-oq7"/>
+                            <constraint firstItem="Ca0-Dj-SHJ" firstAttribute="bottom" secondItem="swF-lI-P23" secondAttribute="bottom" id="RdU-LB-GEO"/>
+                            <constraint firstItem="Ca0-Dj-SHJ" firstAttribute="trailing" secondItem="swF-lI-P23" secondAttribute="trailing" id="T0J-ye-Vky"/>
+                            <constraint firstItem="swF-lI-P23" firstAttribute="top" secondItem="Ca0-Dj-SHJ" secondAttribute="top" id="yx6-s9-IGe"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="lcS-bt-ZLZ"/>
+                    <connections>
+                        <outlet property="googleMapsView" destination="Yay-ff-tpn" id="Jr4-oz-Ydt"/>
+                        <outlet property="searchBar" destination="6Do-m9-0fI" id="9q2-ay-r71"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="v2D-ya-YKD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-532" y="44"/>
         </scene>
     </scenes>
     <resources>

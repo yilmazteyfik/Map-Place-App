@@ -13,16 +13,22 @@
 		A538460D2BEB8BEE008C224E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A538460C2BEB8BEE008C224E /* Assets.xcassets */; };
 		A53846102BEB8BEE008C224E /* Base in Resources */ = {isa = PBXBuildFile; fileRef = A538460F2BEB8BEE008C224E /* Base */; };
 		A53846242BEB8F98008C224E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A53846232BEB8F98008C224E /* Main.storyboard */; };
-		A53846262BEB8FC7008C224E /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53846252BEB8FC7008C224E /* MapViewController.swift */; };
 		A53846282BEB8FEF008C224E /* LocationSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53846272BEB8FEF008C224E /* LocationSelectionViewController.swift */; };
-		A538462A2BEB902C008C224E /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53846292BEB902C008C224E /* SearchViewController.swift */; };
 		A538462C2BEB904C008C224E /* PlaceListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A538462B2BEB904C008C224E /* PlaceListViewController.swift */; };
 		A538462E2BEB90AB008C224E /* PlaceListDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A538462D2BEB90AB008C224E /* PlaceListDetailViewController.swift */; };
+		CD3699942BECCB2800AC17D8 /* CoreLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3699932BECCB2800AC17D8 /* CoreLocationManager.swift */; };
+		CD3699962BECCB2C00AC17D8 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3699952BECCB2C00AC17D8 /* ApiManager.swift */; };
+		CD3699982BECCB8300AC17D8 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3699972BECCB8300AC17D8 /* MapViewController.swift */; };
+		CD36999F2BECCB9E00AC17D8 /* SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD36999A2BECCB9E00AC17D8 /* SearchTableViewCell.xib */; };
+		CD3699A02BECCB9E00AC17D8 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD36999B2BECCB9E00AC17D8 /* SearchTableViewCell.swift */; };
+		CD3699A12BECCB9E00AC17D8 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD36999C2BECCB9E00AC17D8 /* SearchViewController.swift */; };
+		CD3699A22BECCB9E00AC17D8 /* SearchMenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD36999E2BECCB9E00AC17D8 /* SearchMenuModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1DA49D28BC30D36D983D076E /* Pods-Map-Place-App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Map-Place-App.release.xcconfig"; path = "Target Support Files/Pods-Map-Place-App/Pods-Map-Place-App.release.xcconfig"; sourceTree = "<group>"; };
 		479065336702A5B8638EA599 /* Pods-Map-Place-App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Map-Place-App.debug.xcconfig"; path = "Target Support Files/Pods-Map-Place-App/Pods-Map-Place-App.debug.xcconfig"; sourceTree = "<group>"; };
+		52A732AE659AF94EE77F46EE /* Pods_Map_Place_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Map_Place_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A53846002BEB8BEC008C224E /* Map-Place-App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Map-Place-App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A53846032BEB8BEC008C224E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A53846052BEB8BEC008C224E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -31,11 +37,16 @@
 		A538460F2BEB8BEE008C224E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A53846112BEB8BEE008C224E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A53846232BEB8F98008C224E /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		A53846252BEB8FC7008C224E /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		A53846272BEB8FEF008C224E /* LocationSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSelectionViewController.swift; sourceTree = "<group>"; };
-		A53846292BEB902C008C224E /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		A538462B2BEB904C008C224E /* PlaceListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceListViewController.swift; sourceTree = "<group>"; };
 		A538462D2BEB90AB008C224E /* PlaceListDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceListDetailViewController.swift; sourceTree = "<group>"; };
+		CD3699932BECCB2800AC17D8 /* CoreLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreLocationManager.swift; sourceTree = "<group>"; };
+		CD3699952BECCB2C00AC17D8 /* ApiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
+		CD3699972BECCB8300AC17D8 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapViewController.swift; path = "../../../../../LocationSearch 20.42.02/Location-Search/View/Map/MapViewController.swift"; sourceTree = "<group>"; };
+		CD36999A2BECCB9E00AC17D8 /* SearchTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchTableViewCell.xib; sourceTree = "<group>"; };
+		CD36999B2BECCB9E00AC17D8 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
+		CD36999C2BECCB9E00AC17D8 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchViewController.swift; path = "../../../../../LocationSearch 20.42.02/Location-Search/View/Search/SearchViewController.swift"; sourceTree = "<group>"; };
+		CD36999E2BECCB9E00AC17D8 /* SearchMenuModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchMenuModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +72,7 @@
 		7320C1649E170C143E4C1C8B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				52A732AE659AF94EE77F46EE /* Pods_Map_Place_App.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -87,7 +99,6 @@
 			isa = PBXGroup;
 			children = (
 				A538461D2BEB8C5C008C224E /* Manager */,
-				A538461C2BEB8C55008C224E /* Model */,
 				A538461B2BEB8C47008C224E /* View */,
 				A53846192BEB8C35008C224E /* Controller */,
 				A538461E2BEB8C82008C224E /* Delegate */,
@@ -126,16 +137,11 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		A538461C2BEB8C55008C224E /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		A538461D2BEB8C5C008C224E /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				CD3699932BECCB2800AC17D8 /* CoreLocationManager.swift */,
+				CD3699952BECCB2C00AC17D8 /* ApiManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -152,7 +158,7 @@
 		A538461F2BEB8CA4008C224E /* MapView */ = {
 			isa = PBXGroup;
 			children = (
-				A53846252BEB8FC7008C224E /* MapViewController.swift */,
+				CD3699972BECCB8300AC17D8 /* MapViewController.swift */,
 			);
 			path = MapView;
 			sourceTree = "<group>";
@@ -160,7 +166,9 @@
 		A53846202BEB8CC0008C224E /* SearchView */ = {
 			isa = PBXGroup;
 			children = (
-				A53846292BEB902C008C224E /* SearchViewController.swift */,
+				CD36999D2BECCB9E00AC17D8 /* Model */,
+				CD36999C2BECCB9E00AC17D8 /* SearchViewController.swift */,
+				CD3699992BECCB9E00AC17D8 /* View */,
 			);
 			path = SearchView;
 			sourceTree = "<group>";
@@ -180,6 +188,23 @@
 				A53846272BEB8FEF008C224E /* LocationSelectionViewController.swift */,
 			);
 			path = LocationSelectionView;
+			sourceTree = "<group>";
+		};
+		CD3699992BECCB9E00AC17D8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CD36999A2BECCB9E00AC17D8 /* SearchTableViewCell.xib */,
+				CD36999B2BECCB9E00AC17D8 /* SearchTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CD36999D2BECCB9E00AC17D8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CD36999E2BECCB9E00AC17D8 /* SearchMenuModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -243,6 +268,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A53846242BEB8F98008C224E /* Main.storyboard in Resources */,
+				CD36999F2BECCB9E00AC17D8 /* SearchTableViewCell.xib in Resources */,
 				A538460D2BEB8BEE008C224E /* Assets.xcassets in Resources */,
 				A53846102BEB8BEE008C224E /* Base in Resources */,
 			);
@@ -297,13 +323,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A538462A2BEB902C008C224E /* SearchViewController.swift in Sources */,
+				CD3699982BECCB8300AC17D8 /* MapViewController.swift in Sources */,
 				A538462E2BEB90AB008C224E /* PlaceListDetailViewController.swift in Sources */,
+				CD3699962BECCB2C00AC17D8 /* ApiManager.swift in Sources */,
+				CD3699A02BECCB9E00AC17D8 /* SearchTableViewCell.swift in Sources */,
+				CD3699942BECCB2800AC17D8 /* CoreLocationManager.swift in Sources */,
+				CD3699A12BECCB9E00AC17D8 /* SearchViewController.swift in Sources */,
+				CD3699A22BECCB9E00AC17D8 /* SearchMenuModel.swift in Sources */,
 				A53846082BEB8BEC008C224E /* ViewController.swift in Sources */,
 				A538462C2BEB904C008C224E /* PlaceListViewController.swift in Sources */,
 				A53846042BEB8BEC008C224E /* AppDelegate.swift in Sources */,
 				A53846062BEB8BEC008C224E /* SceneDelegate.swift in Sources */,
-				A53846262BEB8FC7008C224E /* MapViewController.swift in Sources */,
 				A53846282BEB8FEF008C224E /* LocationSelectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
