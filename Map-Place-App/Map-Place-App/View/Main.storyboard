@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qiH-8o-LMj">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qiH-8o-LMj">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -236,7 +236,7 @@
                     <connections>
                         <outlet property="searchbarView" destination="8A3-Gy-Efy" id="mGs-4U-a3h"/>
                         <outlet property="tableView" destination="bxV-yr-nhy" id="LT6-6c-dX8"/>
-                        <segue destination="Po3-gk-znZ" kind="push" id="x99-d5-fMh"/>
+                        <segue destination="Po3-gk-znZ" kind="show" id="Q7J-Qo-7U9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pI4-0n-f9T" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -246,7 +246,7 @@
         <!--Place Detail View Controller-->
         <scene sceneID="rP5-n3-vWY">
             <objects>
-                <viewController id="Po3-gk-znZ" customClass="PlaceDetailViewController" customModule="Map_Place_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="placeDetailsVC" id="Po3-gk-znZ" customClass="PlaceDetailViewController" customModule="Map_Place_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zjO-PL-Dlz">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -325,6 +325,9 @@
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="15"/>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="oepnMapTapped:" destination="Po3-gk-znZ" eventType="touchUpInside" id="eXY-hG-wjB"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -355,6 +358,14 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="1OT-V2-I7r"/>
+                    <connections>
+                        <outlet property="detailAddressLabel" destination="dte-Xx-mYp" id="E5l-7H-Tk4"/>
+                        <outlet property="detailDescriptionLabel" destination="Ixb-as-NOo" id="3Q1-pe-HDg"/>
+                        <outlet property="detailImage" destination="OeD-cb-5cU" id="H18-q0-HrI"/>
+                        <outlet property="detailNameLabel" destination="yLk-Ug-TvD" id="uq6-VM-9PP"/>
+                        <outlet property="detailScoreLabel" destination="JCC-EE-9KF" id="e9J-oO-weR"/>
+                        <outlet property="detailTypeLabel" destination="1r0-Lo-H8j" id="9Nw-iq-5HR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dma-0i-HLN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

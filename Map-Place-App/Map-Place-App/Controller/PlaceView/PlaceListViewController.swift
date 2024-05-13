@@ -5,13 +5,6 @@
 //  Created by Teyfik Yılmaz on 8.05.2024.
 //
 
-//
-//  ViewController.swift
-//  map_plaves_v2
-//
-//  Created by Teyfik Yılmaz on 20.02.2024.
-//
-
 import UIKit
 import GoogleMaps
 import GooglePlaces
@@ -29,7 +22,7 @@ class PlaceListViewController: UIViewController,UITableViewDelegate, UITableView
 
   private let tableView: UITableView = {
     let table = UITableView()
-    table.register(UITableViewCell.self, forCellReuseIdentifier:    "cell")
+    table.register(UITableViewCell.self, forCellReuseIdentifier:"cell")
     return table
   }()
   
@@ -60,7 +53,7 @@ class PlaceListViewController: UIViewController,UITableViewDelegate, UITableView
     tableView.backgroundColor = .white
     tableView.delegate = self
     tableView.dataSource = self
-    tableView.register(PlaceCellView.nib(), forCellReuseIdentifier: PlaceCellView.identifier)
+    tableView.register(PlaceCell.nib(), forCellReuseIdentifier: PlaceCell.identifier)
     
       viewModel.$placeList.sink { [weak self] places in
         self?.tableView.reloadData()
@@ -78,18 +71,17 @@ class PlaceListViewController: UIViewController,UITableViewDelegate, UITableView
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
-    let cell = tableView.dequeueReusableCell(withIdentifier: PlaceCellView.identifier, for: indexPath) as! PlaceCellView
+    let cell = tableView.dequeueReusableCell(withIdentifier: PlaceCell.identifier, for: indexPath) as! PlaceCell
       print("name: \(self.viewModel.placeList[indexPath.row].name ??  "Place")")
     cell.placeNameLabel.text = self.viewModel.placeList[indexPath.row].name
-    cell.placeAddressLabel.text = self.viewModel.placeList[indexPath.row].formattedAddress
-    cell.placeRatingLabel.text = String(self.viewModel.placeList[indexPath.row].rating)
+    cell.placeDetailLabel.text = self.viewModel.placeList[indexPath.row].formattedAddress
     if let image = self.viewModel.placeList[indexPath.row].photos?.first{
       self.placesClient.loadPlacePhoto(image) { (photo, error) in
         if let error = error{
           print("Error loading photo metadata: \(error.localizedDescription)")
           return
         } else{
-          cell.placeImageView.image = photo
+          cell.placeDetailImage.image = photo
         }
       }
     }
@@ -98,20 +90,28 @@ class PlaceListViewController: UIViewController,UITableViewDelegate, UITableView
 
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-      let locationLat = self.viewModel.placeList[indexPath.row].coordinate.latitude
-    let locationLong = self.viewModel.placeList[indexPath.row].coordinate.longitude
-    
-    if (UIApplication.shared.canOpenURL(URL(string: "comgooglemaps://")!)){
+      let detailVC = PlaceDetailViewController()
+      detailVC.name = self.viewModel.placeList[indexPath.row].name ?? "Test"
+      detailVC.type = self.viewModel.placeList[indexPath.row].types?.first ?? "Test"
+      detailVC.score = String(self.viewModel.placeList[indexPath.row].rating)
+      detailVC.desc = self.viewModel.placeList[indexPath.row].description
+      navigationController?.pushViewController(detailVC, animated: true)
       
-      if let url = URL(string: "comgooglemaps-x-callback://??saddr=&addr=\(locationLat),\(locationLong)&directionsmode=driving") {
-        UIApplication.shared.open(url,options: [:])
-      }
-    } else {
-      if let urlDestination = URL.init(string: "https://www.google.co.in/maps/dir/?saddr=&daddr=\(locationLat),\(locationLong)&directionsmode=driving"){
-        UIApplication.shared.open(urlDestination)
-        
-      }
-    }
+      
+//      let locationLat = self.viewModel.placeList[indexPath.row].coordinate.latitude
+//    let locationLong = self.viewModel.placeList[indexPath.row].coordinate.longitude
+//    
+//    if (UIApplication.shared.canOpenURL(URL(string: "comgooglemaps://")!)){
+//      
+//      if let url = URL(string: "comgooglemaps-x-callback://??saddr=&addr=\(locationLat),\(locationLong)&directionsmode=driving") {
+//        UIApplication.shared.open(url,options: [:])
+//      }
+//    } else {
+//      if let urlDestination = URL.init(string: "https://www.google.co.in/maps/dir/?saddr=&daddr=\(locationLat),\(locationLong)&directionsmode=driving"){
+//        UIApplication.shared.open(urlDestination)
+//        
+//      }
+//    }
     
   }
   

@@ -38,7 +38,7 @@ extension PlaceListDetailViewController: UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "PlaceDetailViewController") as PlaceDe
+        
     }
     
 }
