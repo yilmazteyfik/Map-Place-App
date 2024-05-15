@@ -30,13 +30,15 @@ class LocationSelectionViewController: UIViewController {
     private let viewModel : MapViewModel = MapViewModel.instance
     private var cancelable : Set<AnyCancellable> = []
     private let coreLocationManager : CoreLocationManager = CoreLocationManager.instance
+    
     let searchButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Ara", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-
+    
+  
     let filterButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Filtrele", for: .normal)
@@ -109,7 +111,7 @@ class LocationSelectionViewController: UIViewController {
         }.store(in: &cancelable)
     }
     @objc func searchButtonTapped(_ sender: UIButton) {
-        let searchViewController = PlaceListViewController() // Replace with your initialization
+        let searchViewController = SearchViewController() // Replace with your initialization
         self.navigationController?.pushViewController(searchViewController, animated: true)
     }
     @objc func filterButtonTapped(_ sender: UIButton) {
