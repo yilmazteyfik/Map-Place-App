@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 class Checkbox: UIButton {
+    //MARK: - Properties
     var isChecked: Bool = false {
         didSet {
             if isChecked {
@@ -38,7 +39,7 @@ class Checkbox: UIButton {
             }
         }
     }
-    
+    // MARK: - Life Cycles
     override init(frame: CGRect) {
         super.init(frame: frame)
         addTarget(self, action: #selector(toggleCheckbox), for: .touchUpInside)
@@ -49,6 +50,10 @@ class Checkbox: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
     
+    
+}
+//MARK: - Helpers
+extension Checkbox {
     @objc private func toggleCheckbox() {
         isChecked = !isChecked
     }
