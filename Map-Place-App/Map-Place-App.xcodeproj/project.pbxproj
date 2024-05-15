@@ -37,7 +37,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1D8418B8A678D3E6F592B787 /* Pods_Map_Place_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Map_Place_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DA49D28BC30D36D983D076E /* Pods-Map-Place-App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Map-Place-App.release.xcconfig"; path = "Target Support Files/Pods-Map-Place-App/Pods-Map-Place-App.release.xcconfig"; sourceTree = "<group>"; };
 		479065336702A5B8638EA599 /* Pods-Map-Place-App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Map-Place-App.debug.xcconfig"; path = "Target Support Files/Pods-Map-Place-App/Pods-Map-Place-App.debug.xcconfig"; sourceTree = "<group>"; };
 		815B61802BF23A4B00FC8BF8 /* PlaceDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailViewController.swift; sourceTree = "<group>"; };
@@ -94,7 +93,6 @@
 		7320C1649E170C143E4C1C8B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1D8418B8A678D3E6F592B787 /* Pods_Map_Place_App.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
