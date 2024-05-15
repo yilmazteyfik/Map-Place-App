@@ -49,46 +49,7 @@ final class PlaceListViewModel {
 }
 
 extension PlaceListViewModel {
-    func listLikelyPlaces1(tableView: UITableView, placesClient: GMSPlacesClient) {
-        placeList.removeAll()
-
-        let placesField: GMSPlaceField = [.name, .types, .all]
-        placesClient.findPlaceLikelihoodsFromCurrentLocation(withPlaceFields: placesField) { (placeLikehoods, error) in
-            guard error == nil else {
-                // TODO: Handle the error.
-                print("Current Place error: \(error!.localizedDescription)")
-                return
-            }
-
-            guard let placeLikelihoods = placeLikehoods else {
-                print("No places found.")
-                return
-            }
-
-            // Get selected categories from FilterModel
-            let selectedCategories = FilterModel.instance.categories.filter { $0.flag }.map { $0.name }
-            let keyWord = FilterModel.instance.$key_word
-
-            for likelihood in placeLikelihoods {
-                let place = likelihood.place
-
-                // Check if any of the selected categories match the place types
-                if let types = place.types {
-                    for category in selectedCategories {
-                        if types.contains(category) {
-                            self.placeList.append(place)
-                            print("key word: \(keyWord)")
-                            break
-                        }
-                    }
-                }
-
-                DispatchQueue.main.async {
-                    tableView.reloadData()
-                }
-            }
-        }
-    }
+    
     func listLikelyPlaces(tableView: UITableView, placesClient: GMSPlacesClient) {
            placeList.removeAll()
 
@@ -123,20 +84,31 @@ extension PlaceListViewModel {
                                if types.contains(category){
                                    isCategorySelected = true
                                    if let name = place.name?.lowercased() , name.contains(keyWord.lowercased()), keyWord != "-1"{
-                                       self.placeList.append(place)
-                                       //print(place.name)
-                                       tableView.reloadData()
+                                       if self.placeList.contains(place){
+                                           continue
+                                       } else {
+                                           self.placeList.append(place)
+                                           print(name)
+                                       }
+                                       //tableView.reloadData()
                                    } else if (keyWord == "-1"){
-                                       self.placeList.append(place)
-                                       //print(place.name)
-                                       tableView.reloadData()
+                                       if self.placeList.contains(place){
+                                           continue
+                                       } else {
+                                           self.placeList.append(place)
+                                       }
                                    }
                                }
                            }
                            if (!isCategorySelected){
                                if let types = place.types, types.contains("food") || types.contains("cafe") || types.contains("restaurant") || types.contains("bar") || types.contains("pub") || types.contains("fast_food") || types.contains("fine_dining") ||
                                     types.contains("bakery") || types.contains("ice_cream_shop") {
-                                    self.placeList.append(place)
+                                   if let name = place.name?.lowercased() , name.contains(keyWord.lowercased()), keyWord != "-1"{
+                                       self.placeList.append(place)
+                                       print(name)
+                                   } else if (keyWord == "-1"){
+                                       self.placeList.append(place)
+                                   }
                                 }
                            }
                        }

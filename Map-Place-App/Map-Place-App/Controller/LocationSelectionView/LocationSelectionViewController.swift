@@ -14,7 +14,7 @@ import Combine
 import CoreLocation
 
 
-class LocationSelectionViewController : UIViewController{
+class LocationSelectionViewController : UIViewController, LocationSelectionViewDelegate{
     // MARK: - Properties
     var filterModel : FilterModel = FilterModel.instance
 
@@ -205,12 +205,12 @@ extension LocationSelectionViewController : CLLocationManagerDelegate{
     }
 }
 //MARK: - LocationSelectionViewDelegate
-extension LocationSelectionViewController : LocationSelectionViewDelegate{
+extension LocationSelectionViewController{
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         locationSelectionView.textFieldShouldBeginEditing(textField)
     }
     func navigateToPlaceListViewController() {
-        let searchViewController = SearchViewController() // Geçmek istediğiniz view controller'ın instance'ı
+        let searchViewController = PlaceListViewController() // Geçmek istediğiniz view controller'ın instance'ı
         self.navigationController?.pushViewController(searchViewController, animated: true)
     }
 }
