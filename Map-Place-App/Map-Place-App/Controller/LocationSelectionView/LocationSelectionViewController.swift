@@ -14,13 +14,13 @@ import Combine
 import CoreLocation
 
 
-
-class LocationSelectionViewController: UIViewController {
+class LocationSelectionViewController : UIViewController{
+    // MARK: - Properties
     var filterModel : FilterModel = FilterModel.instance
 
     var polylines: [GMSPolyline] = []
     var markers: [GMSMarker] = []
-    // MARK: - Properties
+    
     var mapView: GMSMapView!
     var locationManager = CLLocationManager()
     var latitude: CLLocationDegrees?
@@ -50,33 +50,21 @@ class LocationSelectionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupMap()
-        layoutLocationSelectionView()
+        style()
+        layout()
         locationSelectionView.searchButton.addTarget(self, action: #selector(searchButtonTapped), for: .touchUpInside)
         locationSelectionView.filterButton.addTarget(self, action: #selector(filterButtonTapped), for: .touchUpInside)
+        locationSelectionView.delegate = self
 
     }
-    
-    // MARK: - Setup
-    private func setupMap() {
-        let camera = GMSCameraPosition.camera(withLatitude:  37.7749, longitude: -122.4194, zoom: zoom)
-        mapView = GMSMapView.map(withFrame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height * 0.35), camera: camera)
-        mapView?.isMyLocationEnabled = true
-        mapView?.settings.myLocationButton = true
-        mapView?.settings.rotateGestures = true
-        mapView?.settings.zoomGestures = true
-        view = mapView
-
-        let marker = GMSMarker()
-        marker.position = CLLocationCoordinate2D(latitude: 37.7749, longitude: -122.4194)
-        marker.title = "San Francisco"
-        marker.snippet = "California, USA"
-        marker.map = mapView
-    }
-    
-    private func layoutLocationSelectionView() {
+}
+//MARK: - Helpers
+extension LocationSelectionViewController {
+    func style(){
         view.addSubview(locationSelectionView)
         locationSelectionView.translatesAutoresizingMaskIntoConstraints = false
-        
+    }
+    func layout(){
         NSLayoutConstraint.activate([
             locationSelectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             locationSelectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
@@ -110,6 +98,7 @@ class LocationSelectionViewController: UIViewController {
 
         }.store(in: &cancelable)
     }
+    
     @objc func searchButtonTapped(_ sender: UIButton) {
         let searchViewController = SearchViewController() // Replace with your initialization
         self.navigationController?.pushViewController(searchViewController, animated: true)
@@ -132,32 +121,24 @@ class LocationSelectionViewController: UIViewController {
         self.navigationController?.pushViewController(placeListViewController, animated: true)
     }
 }
-extension LocationSelectionViewController : CLLocationManagerDelegate {
+//MARK: - Map Helpers
+extension LocationSelectionViewController {
     
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
-        if let location = locations.last{
-            latitude = location.coordinate.latitude
-            longitude = location.coordinate.longitude
-            setupMap()
-            print(latitude ?? 0)
-            buildMarker(position: CLLocationCoordinate2D(latitude: latitude!, longitude: longitude!), title: "Me")
-      }
+    private func setupMap() {
+        let camera = GMSCameraPosition.camera(withLatitude:  37.7749, longitude: -122.4194, zoom: zoom)
+        mapView = GMSMapView.map(withFrame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height * 0.35), camera: camera)
+        mapView?.isMyLocationEnabled = true
+        mapView?.settings.myLocationButton = true
+        mapView?.settings.rotateGestures = true
+        mapView?.settings.zoomGestures = true
+        view = mapView
+
+        let marker = GMSMarker()
+        marker.position = CLLocationCoordinate2D(latitude: 37.7749, longitude: -122.4194)
+        marker.title = "San Francisco"
+        marker.snippet = "California, USA"
+        marker.map = mapView
     }
-    
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        switch status {
-        case .authorizedWhenInUse, .authorizedAlways:
-            locationManager.startUpdatingLocation()
-        default:
-            print("location permission denied")
-        }
-    }
- 
-  
-    
-    
     
     func addPolyLineWithEncodedStringInMap(encodedString: String) {
         for polyline in polylines {
@@ -200,5 +181,37 @@ extension LocationSelectionViewController : CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
       print("Error at " +  #function + ", Error code: \(error)")
     }
-    
 }
+//MARK: - CLLocationManagerDelegate
+extension LocationSelectionViewController : CLLocationManagerDelegate{
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        if let location = locations.last{
+            latitude = location.coordinate.latitude
+            longitude = location.coordinate.longitude
+            setupMap()
+            print(latitude ?? 0)
+            buildMarker(position: CLLocationCoordinate2D(latitude: latitude!, longitude: longitude!), title: "Me")
+      }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        switch status {
+        case .authorizedWhenInUse, .authorizedAlways:
+            locationManager.startUpdatingLocation()
+        default:
+            print("location permission denied")
+        }
+    }
+}
+//MARK: - LocationSelectionViewDelegate
+extension LocationSelectionViewController : LocationSelectionViewDelegate{
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        locationSelectionView.textFieldShouldBeginEditing(textField)
+    }
+    func navigateToPlaceListViewController() {
+        let searchViewController = SearchViewController() // Geçmek istediğiniz view controller'ın instance'ı
+        self.navigationController?.pushViewController(searchViewController, animated: true)
+    }
+}
+

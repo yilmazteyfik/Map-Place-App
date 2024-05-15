@@ -10,12 +10,19 @@
 import Foundation
 import UIKit
 
+
+protocol LocationSelectionViewDelegate: AnyObject {
+    func navigateToPlaceListViewController()
+}
+
+
 class LocationSelectionView: UIView {
     var filterModel : FilterModel = FilterModel.instance
 
     
     // MARK: -Properties
-
+    weak var delegate: LocationSelectionViewDelegate?
+    
     let bottomView: UIView = {
         let view = UIView()
         view.backgroundColor = .white // İstediğiniz arka plan rengini ayarlayabilirsiniz
@@ -27,7 +34,7 @@ class LocationSelectionView: UIView {
         textField.placeholder = "Konum 1'i Giriniz"
         textField.borderStyle = .roundedRect
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.isUserInteractionEnabled = false // Disable user interaction
+        //textField.isUserInteractionEnabled = false // Disable user interaction
         return textField
     }()
 
@@ -36,7 +43,7 @@ class LocationSelectionView: UIView {
         textField.placeholder = "Konum 2'yi Giriniz"
         textField.borderStyle = .roundedRect
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.isUserInteractionEnabled = false // Disable user interaction
+        //textField.isUserInteractionEnabled = false // Disable user interaction
         return textField
     }()
     let key_word_tex_field: UITextField = {
@@ -140,6 +147,9 @@ class LocationSelectionView: UIView {
         super.init(frame: frame)
         style()
         layout()
+        enterLocation1TextField.delegate = self
+        enterLocation2TextField.delegate = self
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -280,7 +290,15 @@ extension LocationSelectionView {
       // Uzaklık değerini label'a yazdırma
       distance_label.text = String(format: "Distance: %.0f meter", roundedValue)
     }
+}
+extension LocationSelectionView : UITextFieldDelegate{
     
-   
-
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        if textField == enterLocation1TextField || textField == enterLocation2TextField {
+            delegate?.navigateToPlaceListViewController()
+            return false // TextField'ın editlenmesini engellemek için false döndürüyoruz.
+        }
+        return true
+    }
 }

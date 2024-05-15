@@ -10,9 +10,8 @@ import Foundation
 import UIKit
 
 class CategoryView: UIView {
-    var filterModel : FilterModel = FilterModel.instance
-
   // MARK: - Properties
+    var filterModel : FilterModel = FilterModel.instance
   private let categories: [String] = [
     "Restoran",
     "Kafe",
@@ -31,74 +30,75 @@ class CategoryView: UIView {
 
   init() {
     super.init(frame: .zero)
-    setupSubviews()
-    setupConstraints()
-    self.backgroundColor = .systemGray6 // Set background color to pink
-    self.layer.cornerRadius = 12
+    style()
+    layout()
 
-    self.layer.shadowColor = UIColor.black.cgColor
-    self.layer.shadowRadius = 3.0
-    self.layer.shadowOffset = CGSize(width: 2, height: 2)
-    self.layer.shadowOpacity = 0 // Initial opacity set to 0
   }
 
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
 
-  // MARK: - Subviews and Constraints
 
-  private func setupSubviews() {
-    for (index, category) in categories.enumerated() {
-      let checkBox = Checkbox(frame: CGRect(x: 30, y: 10 + index * 30, width: 20, height: 20)) // Adjust position and size
-      checkBox.setTitle("  \(category)", for: .normal)
-        checkBox.setTitleColor(.black, for: .normal)
-      checkBox.addTarget(self, action: #selector(categorySelected(_:)), for: .touchUpInside)
-      checkBox.tag = index // Set tag to identify the selected category
-        //checkBox.setImage(UIImage(named: "square"), for: .normal)
-        
-        if let image = UIImage(named: "square") {
-            let newSize = CGSize(width: 20, height: 20)
-            UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0)
-            image.draw(in: CGRect(origin: .zero, size: newSize))
-            let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
-            UIGraphicsEndImageContext()
-            
-            if let resizedImage = resizedImage {
-                checkBox.setImage(resizedImage, for: .normal)
-            }
-        }
-        
-        
-      checkboxes.append(checkBox)
-      addSubview(checkBox)
-    }
-  }
 
-  private func setupConstraints() {
-    // Implement constraints to position your checkboxes here
-    // You can use a loop to position each checkbox vertically
-
-    var topAnchor = self.topAnchor
-
-    for checkbox in checkboxes {
-      checkbox.translatesAutoresizingMaskIntoConstraints = false
-      checkbox.topAnchor.constraint(equalTo: topAnchor, constant: 10).isActive = true
-      checkbox.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 15).isActive = true
-      topAnchor = checkbox.bottomAnchor // Update top anchor for next checkbox
-    }
-  }
-
-  // MARK: - Checkbox Action
-
-  @objc func categorySelected(_ sender: Checkbox) {
-    let selectedIndex = sender.tag
-    let selectedCategory = categories[selectedIndex]
-      filterModel.categories[selectedIndex].flag = checkboxes[selectedIndex].isChecked
-      filterModel.printValues()
-    print("Category selected: \(selectedCategory)")
-
-    // Implement your logic here based on the selected category
-  }
 }
+// MARK: - Helpers
+extension CategoryView {
+    func style(){
+        self.backgroundColor = .systemGray6 // Set background color to pink
+        self.layer.cornerRadius = 12
 
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowRadius = 3.0
+        self.layer.shadowOffset = CGSize(width: 2, height: 2)
+        self.layer.shadowOpacity = 0 // Initial opacity set to 0
+        setupSubviews()
+    }
+    func layout(){
+        var topAnchor = self.topAnchor
+
+        for checkbox in checkboxes {
+          checkbox.translatesAutoresizingMaskIntoConstraints = false
+          checkbox.topAnchor.constraint(equalTo: topAnchor, constant: 10).isActive = true
+          checkbox.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 15).isActive = true
+          topAnchor = checkbox.bottomAnchor // Update top anchor for next checkbox
+        }
+    }
+    private func setupSubviews() {
+      for (index, category) in categories.enumerated() {
+        let checkBox = Checkbox(frame: CGRect(x: 30, y: 10 + index * 30, width: 20, height: 20)) // Adjust position and size
+        checkBox.setTitle("  \(category)", for: .normal)
+          checkBox.setTitleColor(.black, for: .normal)
+        checkBox.addTarget(self, action: #selector(categorySelected(_:)), for: .touchUpInside)
+        checkBox.tag = index // Set tag to identify the selected category
+          //checkBox.setImage(UIImage(named: "square"), for: .normal)
+          
+          if let image = UIImage(named: "square") {
+              let newSize = CGSize(width: 20, height: 20)
+              UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0)
+              image.draw(in: CGRect(origin: .zero, size: newSize))
+              let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
+              UIGraphicsEndImageContext()
+              
+              if let resizedImage = resizedImage {
+                  checkBox.setImage(resizedImage, for: .normal)
+              }
+          }
+          
+          
+        checkboxes.append(checkBox)
+        addSubview(checkBox)
+      }
+    }
+    // MARK: - Checkbox Action
+
+    @objc func categorySelected(_ sender: Checkbox) {
+      let selectedIndex = sender.tag
+      let selectedCategory = categories[selectedIndex]
+        filterModel.categories[selectedIndex].flag = checkboxes[selectedIndex].isChecked
+        filterModel.printValues()
+      print("Category selected: \(selectedCategory)")
+
+      // Implement your logic here based on the selected category
+    }
+}
