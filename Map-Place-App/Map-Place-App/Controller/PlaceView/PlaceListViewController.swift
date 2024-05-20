@@ -27,9 +27,13 @@ class PlaceListViewController: UIViewController,UITableViewDelegate, UITableView
   }()
   
   override func viewWillAppear(_ animated: Bool) {
-    
+      
     if viewModel.placeList.isEmpty{
       viewModel.listLikelyPlaces(tableView: self.tableView, placesClient: self.placesClient)
+        
+    }else{
+        
+        viewModel.listLikelyPlaces(tableView: self.tableView, placesClient: self.placesClient)
     }
   }
     override func viewDidDisappear(_ animated: Bool) {
