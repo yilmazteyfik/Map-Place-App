@@ -112,9 +112,6 @@ extension PlaceListViewModel {
                                 }
                            }
                        }
-                   
-
-
                        DispatchQueue.main.async {
                            tableView.reloadData()
                        }
