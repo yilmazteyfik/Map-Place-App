@@ -55,6 +55,7 @@ class LocationSelectionViewController : UIViewController, LocationSelectionViewD
         locationSelectionView.searchButton.addTarget(self, action: #selector(searchButtonTapped), for: .touchUpInside)
         locationSelectionView.filterButton.addTarget(self, action: #selector(filterButtonTapped), for: .touchUpInside)
         locationSelectionView.delegate = self
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.backward") , style: .plain, target: self, action: #selector(didTappedBackButton))
 
     }
 }
@@ -210,8 +211,13 @@ extension LocationSelectionViewController{
         locationSelectionView.textFieldShouldBeginEditing(textField)
     }
     func navigateToPlaceListViewController() {
-        let searchViewController = PlaceListViewController() // Geçmek istediğiniz view controller'ın instance'ı
+        let searchViewController = SearchViewController() // Geçmek istediğiniz view controller'ın instance'ı
         self.navigationController?.pushViewController(searchViewController, animated: true)
     }
 }
-
+//MARK: - NavBar Funcitons
+extension LocationSelectionViewController {
+    @objc func didTappedBackButton(){
+        self.navigationController?.popToRootViewController(animated: true)
+    }
+}
