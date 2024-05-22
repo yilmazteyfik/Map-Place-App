@@ -29,6 +29,8 @@ class LocationSelectionView: UIView {
         return view
     }()
     let catagoryView = CategoryView()
+    var enterLocationTextField = [UITextField]()
+    
     let enterLocation1TextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "Konum 1'i Giriniz"
@@ -149,6 +151,8 @@ class LocationSelectionView: UIView {
         layout()
         enterLocation1TextField.delegate = self
         enterLocation2TextField.delegate = self
+        enterLocationTextField.append(enterLocation1TextField)
+        enterLocationTextField.append(enterLocation2TextField)
         
     }
     

@@ -107,36 +107,32 @@ extension SearchViewController : UITableViewDelegate , UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-         tableView.deselectRow(at: indexPath, animated: true)
-         
-         tableView.isHidden = true
-         
-         let place = places[indexPath.row]
-         GooglePlacesManeger.shared.resolveLocation(for: place) {[weak self] result in
-           
-             switch result {
-               
-           case .success(let coordinate ):
-             
-               DispatchQueue.main.async{
-               self?.delegate?.didTapPlaceWithCoordinate(with: coordinate)
-             }
-           case .failure(let error):
-             print(error)
-           }
-             
-         /*  if let locVC = self?.navigationController?.viewControllers[1] as? LocationsViewController {
-             locVC.isLocationSelected = true
-             locVC.locationName = place.name
-             
-           }
-          self?.navigationController?.popViewController(animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        tableView.isHidden = true
+        
+        let place = places[indexPath.row]
+        GooglePlacesManeger.shared.resolveLocation(for: place) {[weak self] result in
+            switch result {
+            case .success(let coordinate ):
+                DispatchQueue.main.async{
+                    self?.delegate?.didTapPlaceWithCoordinate(with: coordinate)
+                }
+            case .failure(let error):
+                print(error)
+            }
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            if let view = storyboard.instantiateViewController(withIdentifier: "LocationSelectionViewController") as? LocationSelectionViewController{
+                view.isLocationSelected = true
+                view.locationName = place.name
+                print(view.locationName)
+                self?.navigationController?.pushViewController(view, animated: true)
+            }
+        }
+    }
 
-          */
-         }
-         
-         
-       }
+        
+        
 }
 
 

@@ -145,5 +145,59 @@ final class GooglePlacesManeger{
             
         }
     }
-       
+    
+    func findPlacesNearby(location1: CLLocationCoordinate2D, radius: Double, completion: @escaping ([GMSPlace]) -> Void) {
+        guard let apiKey = ApiManager.apiKey else {
+            fatalError("Google Maps API anahtarı eksik veya yanlış konumda")
+        }
+        
+        let urlString = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(location1.latitude),\(location1.longitude)&radius=\(radius)&type=restaurant&key=\(apiKey)"
+        print("1")
+        
+        guard let url = URL(string: urlString) else {
+            completion([])
+            return
+        }
+        print("2")
+        
+        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            guard let data = data, error == nil else {
+                completion([])
+                return
+            }
+            
+            do {
+                if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
+                    let results = json["results"] as? [[String: Any]] {
+                    print("JSON: \(json)")
+
+                    var places = [GMSPlace]()
+                    for result in results {
+                        if let placeID = result["place_id"] as? String {
+                            DispatchQueue.main.async {
+                                GMSPlacesClient.shared().lookUpPlaceID(placeID) { (place, error) in
+                                    if let place = place {
+                                        places.append(place)
+                                        if places.count == results.count {
+                                            print("Sonuc: \(places.count)")
+                                            completion(places)
+                                        }
+                                    } else {
+                                        print("Place lookup error: \(error?.localizedDescription ?? "")")
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    return
+                }
+            } catch {
+                print("JSON serialization error: \(error.localizedDescription)")
+            }
+            
+            completion([])
+        }
+        
+        task.resume()
+    }
 }

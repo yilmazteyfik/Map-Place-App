@@ -12,11 +12,15 @@ import GoogleMaps
 import GooglePlaces
 import Combine
 import CoreLocation
-
-
+var buttonIndex = 0
+var firstLocation = "-1"
 class LocationSelectionViewController : UIViewController, LocationSelectionViewDelegate{
     // MARK: - Properties
+    var stringURL = ""
     var filterModel : FilterModel = FilterModel.instance
+    var placeModel = PlaceListViewModel.instance
+    var locationName = "error"
+    var isLocationSelected = false
 
     var polylines: [GMSPolyline] = []
     var markers: [GMSMarker] = []
@@ -56,6 +60,8 @@ class LocationSelectionViewController : UIViewController, LocationSelectionViewD
         locationSelectionView.filterButton.addTarget(self, action: #selector(filterButtonTapped), for: .touchUpInside)
         locationSelectionView.delegate = self
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.backward") , style: .plain, target: self, action: #selector(didTappedBackButton))
+        setPlaces()
+        setURL()
 
     }
 }
@@ -123,6 +129,29 @@ extension LocationSelectionViewController {
         
         filterModel.printValues()
         self.navigationController?.pushViewController(placeListViewController, animated: true)
+    }
+    func setPlaces(){
+        print(locationName)
+        if isLocationSelected{
+            if buttonIndex == 0 {
+                locationSelectionView.enterLocationTextField[buttonIndex].text = locationName
+                firstLocation = locationName
+                viewModel.isClickedEnterLocations = false
+            }else {
+                locationSelectionView.enterLocationTextField[buttonIndex].text = locationName
+                locationSelectionView.enterLocationTextField[0].text = firstLocation
+            }
+            buttonIndex = buttonIndex + 1
+            if buttonIndex > 1 {
+                buttonIndex = 0
+                viewModel.setSecondLocation(value: locationName)
+                viewModel.setIsClıckedValue()
+            }else {
+                viewModel.setFirstLocation(value: locationName)
+            }
+            
+        }
+        
     }
 }
 //MARK: - Map Helpers
@@ -223,5 +252,79 @@ extension LocationSelectionViewController{
 extension LocationSelectionViewController {
     @objc func didTappedBackButton(){
         self.navigationController?.popToRootViewController(animated: true)
+    }
+}
+//MARK: - JSON extensions
+extension LocationSelectionViewController {
+    func decodeJSON(jsonData: Data) -> [CLLocationCoordinate2D] {
+        var coordinates: [CLLocationCoordinate2D] = []
+        
+        do {
+            let routeResponse = try JSONDecoder().decode(RouteResponse.self, from: jsonData)
+                for route in routeResponse.routes {
+                        for leg in route.legs {
+                            for step in leg.steps {
+                                var loc = CLLocationCoordinate2D()
+                                loc = .init(latitude : step.end_location.lat, longitude: step.end_location.lng)
+                                coordinates.append(loc)
+                            }
+                        }
+                    }
+        
+                
+        } catch {
+            print("Hata oluştu: \(error)")
+        }
+        
+        return coordinates
+    }
+    
+    func fetchJSONData(from urlString: String, completion: @escaping (Data?) -> Void) {
+        guard let url = URL(string: urlString) else {
+            print("Invalid URL")
+            completion(nil)
+            return
+        }
+
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            guard let data = data, error == nil else {
+                print("Error fetching JSON: \(error?.localizedDescription ?? "Unknown error")")
+                completion(nil)
+                return
+            }
+            completion(data)
+        }.resume()
+    }
+    
+    func printLocations(){
+        fetchJSONData(from: stringURL) { data in
+            guard let jsonData = data else {
+                print("Failed to fetch JSON data")
+                return
+            }
+            
+            let coordinates = self.decodeJSON(jsonData: jsonData)
+            for coordinate in coordinates {
+                print("Coordinates: \(coordinate.latitude), \(coordinate.longitude)")
+                self.placeModel.coordinateList.append(coordinate)
+            }
+        }
+    }
+    
+    func setURL() {
+        if viewModel.isClickedEnterLocations ?? false {
+            guard let firstLatitude = viewModel.firstCoordinate?.latitude,
+                  let firstLongitude = viewModel.firstCoordinate?.longitude,
+                  let secondLatitude = viewModel.secondCoordinate?.latitude,
+                  let secondLongitude = viewModel.secondCoordinate?.longitude else {
+                print("Koordinatlar bulunamadı.")
+                return
+            }
+
+            let url = "https://maps.googleapis.com/maps/api/directions/json?origin=\(firstLatitude),\(firstLongitude)&destination=\(secondLatitude),\(secondLongitude)&sensor=false&mode=driving&key=AIzaSyAV_h-oBi2Vhc_MEkn8SYYJxflzT4ylIRM"
+            stringURL = url
+            print(stringURL)
+            printLocations()
+        }
     }
 }
