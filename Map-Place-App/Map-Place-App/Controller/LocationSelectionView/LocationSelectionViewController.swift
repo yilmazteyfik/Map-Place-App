@@ -214,7 +214,8 @@ extension LocationSelectionViewController{
         locationSelectionView.textFieldShouldBeginEditing(textField)
     }
     func navigateToPlaceListViewController() {
-        let searchViewController = SearchViewController() // Geçmek istediğiniz view controller'ın instance'ı
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let searchViewController = storyboard.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController// Replace with your initialization
         self.navigationController?.pushViewController(searchViewController, animated: true)
     }
 }
