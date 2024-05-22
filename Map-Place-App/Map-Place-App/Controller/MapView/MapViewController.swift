@@ -40,8 +40,12 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
        super.viewDidLoad()
        locationManager.delegate = self
-       locationManager.requestWhenInUseAuthorization()
-    
+        if CLLocationManager.authorizationStatus() != .authorizedWhenInUse {
+                locationManager.requestWhenInUseAuthorization()
+            }else{
+                locationManager.startUpdatingLocation()
+            }
+
     }
     
       @IBAction func zoomIn(_ sender: Any) {
@@ -58,8 +62,7 @@ class MapViewController: UIViewController {
 
 extension MapViewController : UISearchBarDelegate {
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        print("button çalışıt")
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        _ = UIStoryboard(name: "Main", bundle: nil)
         let searchViewController = LocationSelectionViewController()
 
         self.navigationController?.pushViewController(searchViewController, animated: true)
@@ -71,7 +74,6 @@ extension MapViewController : CLLocationManagerDelegate {
    
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
         if let location = locations.last{
             latitude = location.coordinate.latitude
             longitude = location.coordinate.longitude

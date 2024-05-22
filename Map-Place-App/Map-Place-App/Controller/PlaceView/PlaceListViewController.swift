@@ -94,14 +94,24 @@ class PlaceListViewController: UIViewController,UITableViewDelegate, UITableView
 
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-      let detailVC = PlaceDetailViewController()
-      detailVC.name = self.viewModel.placeList[indexPath.row].name ?? "Test"
-      detailVC.type = self.viewModel.placeList[indexPath.row].types?.first ?? "Test"
-      detailVC.score = String(self.viewModel.placeList[indexPath.row].rating)
-      detailVC.desc = self.viewModel.placeList[indexPath.row].description
-      navigationController?.pushViewController(detailVC, animated: true)
+     
+      print("clicked")
+      let storyboard = UIStoryboard(name: "Main", bundle: nil)
+
+      let placeDetailView = storyboard.instantiateViewController(withIdentifier: PlaceDetailViewController.identifier) as! PlaceDetailViewController
+      
+      var place =  self.viewModel.placeList[indexPath.row]
+      
+      placeDetailView.name = place.name
+      placeDetailView.type = place.types?.first
+      placeDetailView.score = place.rating
+      placeDetailView.address = place.formattedAddress
+      placeDetailView.desc = place.description
       
       
+      
+      
+      self.navigationController?.pushViewController(placeDetailView, animated: true)
 //      let locationLat = self.viewModel.placeList[indexPath.row].coordinate.latitude
 //    let locationLong = self.viewModel.placeList[indexPath.row].coordinate.longitude
 //    

@@ -28,11 +28,5 @@
 			</array>
 		</dict>
 	</dict>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>We need access your location</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>We need access your location</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>We need access your location</string>
 </dict>
 </plist>

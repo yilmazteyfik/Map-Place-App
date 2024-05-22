@@ -101,7 +101,10 @@ extension LocationSelectionViewController {
     }
     
     @objc func searchButtonTapped(_ sender: UIButton) {
-        let searchViewController = SearchViewController() // Replace with your initialization
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+
+        let searchViewController = storyboard.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController// Replace with your initialization
+        
         self.navigationController?.pushViewController(searchViewController, animated: true)
     }
     @objc func filterButtonTapped(_ sender: UIButton) {

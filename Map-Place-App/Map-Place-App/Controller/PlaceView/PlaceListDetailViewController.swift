@@ -39,6 +39,7 @@ extension PlaceListDetailViewController: UITableViewDelegate, UITableViewDataSou
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+       
     }
     
 }

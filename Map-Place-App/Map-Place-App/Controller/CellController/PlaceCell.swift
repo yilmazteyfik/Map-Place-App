@@ -24,6 +24,7 @@ class PlaceCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         selectionStyle = .none
+        placeDetailButton.addTarget(self, action: #selector(viewDetailTapped), for: .touchUpInside)
         
     }
 
@@ -32,7 +33,6 @@ class PlaceCell: UITableViewCell {
     }
     
     @IBAction func viewDetailTapped(_ sender: UIButton) {
-        //TODO: Send to Place Detail Screen with datas (İd ??)
         
     }
 }

@@ -34,9 +34,11 @@
 		CD3699A62BECCE6300AC17D8 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3699A52BECCE6300AC17D8 /* MapViewController.swift */; };
 		CDCF42192BF235EB0091FC53 /* PlaceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDCF42182BF235EB0091FC53 /* PlaceCell.xib */; };
 		CDCF421C2BF235F80091FC53 /* PlaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCF421B2BF235F80091FC53 /* PlaceCell.swift */; };
+		CDD416B52BFE0A13000CD6B0 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = CDD416B42BFE0A13000CD6B0 /* Kingfisher */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1A15CD36440DF451907E546E /* Pods_Map_Place_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Map_Place_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DA49D28BC30D36D983D076E /* Pods-Map-Place-App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Map-Place-App.release.xcconfig"; path = "Target Support Files/Pods-Map-Place-App/Pods-Map-Place-App.release.xcconfig"; sourceTree = "<group>"; };
 		479065336702A5B8638EA599 /* Pods-Map-Place-App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Map-Place-App.debug.xcconfig"; path = "Target Support Files/Pods-Map-Place-App/Pods-Map-Place-App.debug.xcconfig"; sourceTree = "<group>"; };
 		815B61802BF23A4B00FC8BF8 /* PlaceDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailViewController.swift; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CDD416B52BFE0A13000CD6B0 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,6 +96,7 @@
 		7320C1649E170C143E4C1C8B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1A15CD36440DF451907E546E /* Pods_Map_Place_App.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -288,6 +292,9 @@
 			dependencies = (
 			);
 			name = "Map-Place-App";
+			packageProductDependencies = (
+				CDD416B42BFE0A13000CD6B0 /* Kingfisher */,
+			);
 			productName = "Map-Place-App";
 			productReference = A53846002BEB8BEC008C224E /* Map-Place-App.app */;
 			productType = "com.apple.product-type.application";
@@ -316,6 +323,9 @@
 				Base,
 			);
 			mainGroup = A53845F72BEB8BEC008C224E;
+			packageReferences = (
+				CDD416AC2BFE0811000CD6B0 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = A53846012BEB8BEC008C224E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -478,7 +488,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -535,7 +545,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -559,6 +569,9 @@
 				"EXCLUDED_ARCHS[sdk=*]" = arm64;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Map-Place-App/Info.plist";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We need access your location";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "We need access your location";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need access your location";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -592,6 +605,9 @@
 				"EXCLUDED_ARCHS[sdk=*]" = arm64;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Map-Place-App/Info.plist";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We need access your location";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "We need access your location";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need access your location";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -633,6 +649,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CDD416AC2BFE0811000CD6B0 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.11.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CDD416B42BFE0A13000CD6B0 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CDD416AC2BFE0811000CD6B0 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A53845F82BEB8BEC008C224E /* Project object */;
 }

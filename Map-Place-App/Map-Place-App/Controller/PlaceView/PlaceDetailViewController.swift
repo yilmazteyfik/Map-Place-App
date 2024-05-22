@@ -6,7 +6,6 @@
 //
 
 import UIKit
-
 class PlaceDetailViewController: UIViewController {
 
     @IBOutlet weak var detailImage: UIImageView!
@@ -16,24 +15,31 @@ class PlaceDetailViewController: UIViewController {
     @IBOutlet weak var detailAddressLabel: UILabel!
     @IBOutlet weak var detailDescriptionLabel: UILabel!
     
-    var name = " "
-    var type = " "
-    var score = " "
-    var address = " "
-    var desc = " "
+    var name : String?
+    var type : String?
+    var score : Float?
+    var address : String?
+    var desc : String?
+    var url : String?
     
+    
+    static let identifier = String(describing: PlaceDetailViewController.self)
+
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.detailNameLabel.text = name
-        self.detailTypeLabel.text = type
-        self.detailScoreLabel.text = score
-        self.detailAddressLabel.text = address
-        self.detailDescriptionLabel.text = desc
-        
+        setup()
     }
+    
+     func setup(){
+         self.detailNameLabel.text = name
+         self.detailTypeLabel.text = type
+         self.detailScoreLabel.text = "\(score)"
+         self.detailAddressLabel.text = address
+         self.detailDescriptionLabel.text = desc
+   }
     
 
     @IBAction func oepnMapTapped(_ sender: Any) {
