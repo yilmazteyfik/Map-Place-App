@@ -35,7 +35,6 @@
 		CD3699A62BECCE6300AC17D8 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3699A52BECCE6300AC17D8 /* MapViewController.swift */; };
 		CDCF42192BF235EB0091FC53 /* PlaceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDCF42182BF235EB0091FC53 /* PlaceCell.xib */; };
 		CDCF421C2BF235F80091FC53 /* PlaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCF421B2BF235F80091FC53 /* PlaceCell.swift */; };
-		CDD416B52BFE0A13000CD6B0 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = CDD416B42BFE0A13000CD6B0 /* Kingfisher */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,7 +78,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CDD416B52BFE0A13000CD6B0 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,7 +294,6 @@
 			);
 			name = "Map-Place-App";
 			packageProductDependencies = (
-				CDD416B42BFE0A13000CD6B0 /* Kingfisher */,
 			);
 			productName = "Map-Place-App";
 			productReference = A53846002BEB8BEC008C224E /* Map-Place-App.app */;
@@ -664,14 +661,6 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		CDD416B42BFE0A13000CD6B0 /* Kingfisher */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CDD416AC2BFE0811000CD6B0 /* XCRemoteSwiftPackageReference "Kingfisher" */;
-			productName = Kingfisher;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A53845F82BEB8BEC008C224E /* Project object */;
 }
