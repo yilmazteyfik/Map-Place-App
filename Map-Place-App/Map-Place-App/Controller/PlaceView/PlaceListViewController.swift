@@ -19,6 +19,9 @@ class PlaceListViewController: UIViewController,UITableViewDelegate, UITableView
   var placesClient: GMSPlacesClient!
   private let viewModel = PlaceListViewModel.instance
   private var cancelable : Set<AnyCancellable> = []
+    var currentPage = 0
+    let pageSize = 20
+    var displayedPlaces: [GMSPlace] = [] // Bu ekranda gösterilen veriler
 
   private let tableView: UITableView = {
     let table = UITableView()
@@ -28,13 +31,16 @@ class PlaceListViewController: UIViewController,UITableViewDelegate, UITableView
   
   override func viewWillAppear(_ animated: Bool) {
       
-    if viewModel.placeList.isEmpty{
-      viewModel.listLikelyPlaces(tableView: self.tableView, placesClient: self.placesClient)
-        
-    }else{
-        
-        viewModel.listLikelyPlaces(tableView: self.tableView, placesClient: self.placesClient)
+      if viewModel.placeList.isEmpty && viewModel.coordinateList.isEmpty{
+        self.viewModel.listLikelyPlaces(tableView: self.tableView, placesClient: self.placesClient)
+        self.viewModel.removeDublicationPlaceList()
     }
+      viewModel.filterModel.$categories.sink { _ in
+              // Fetch places when categories change
+          self.viewModel.placeList.removeAll()
+          self.viewModel.filterPlace(tableView: self.tableView)
+          self.viewModel.removeDublicationPlaceList()
+          }.store(in: &cancelable)
   }
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
@@ -43,10 +49,7 @@ class PlaceListViewController: UIViewController,UITableViewDelegate, UITableView
         viewModel.placeList = []
     }
     override func viewDidAppear(_ animated: Bool) {
-        viewModel.filterModel.$categories.sink { _ in
-                // Fetch places when categories change
-                self.viewModel.fetchPlaces()
-            }.store(in: &cancelable)
+        
     }
   
   override func viewDidLoad() {
@@ -59,9 +62,8 @@ class PlaceListViewController: UIViewController,UITableViewDelegate, UITableView
     tableView.dataSource = self
     tableView.register(PlaceCell.nib(), forCellReuseIdentifier: PlaceCell.identifier)
     
-      viewModel.$placeList.sink { [weak self] places in
-        self?.tableView.reloadData()
-      }.store(in: &cancelable)
+      
+      loadMoreData()
       
   }
   override func viewDidLayoutSubviews() {
@@ -70,16 +72,17 @@ class PlaceListViewController: UIViewController,UITableViewDelegate, UITableView
   }
     
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-      return self.viewModel.placeList.count
+      return displayedPlaces.count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
     let cell = tableView.dequeueReusableCell(withIdentifier: PlaceCell.identifier, for: indexPath) as! PlaceCell
-      print("name: \(self.viewModel.placeList[indexPath.row].name ??  "Place")")
-    cell.placeNameLabel.text = self.viewModel.placeList[indexPath.row].name
-    cell.placeDetailLabel.text = self.viewModel.placeList[indexPath.row].formattedAddress
-    if let image = self.viewModel.placeList[indexPath.row].photos?.first{
+      //print("name: \(self.viewModel.placeList[indexPath.row].name ??  "Place")")
+      let place = displayedPlaces[indexPath.row]
+      cell.placeNameLabel.text = place.name
+    cell.placeDetailLabel.text = place.formattedAddress
+    if let image = place.photos?.first{
       self.placesClient.loadPlacePhoto(image) { (photo, error) in
         if let error = error{
           print("Error loading photo metadata: \(error.localizedDescription)")
@@ -91,6 +94,27 @@ class PlaceListViewController: UIViewController,UITableViewDelegate, UITableView
     }
     return cell
   }
+    func loadMoreData() {
+            let start = currentPage * pageSize
+        let end = min(start + pageSize, viewModel.placeList.count)
+            
+            guard start < end else { return }
+            
+        let newPlaces = viewModel.placeList[start..<end]
+            displayedPlaces.append(contentsOf: newPlaces)
+            currentPage += 1
+            
+            tableView.reloadData()
+        }
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+            let offsetY = scrollView.contentOffset.y
+            let contentHeight = scrollView.contentSize.height
+            let height = scrollView.frame.size.height
+            
+            if offsetY > contentHeight - height {
+                loadMoreData()
+            }
+        }
 
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
