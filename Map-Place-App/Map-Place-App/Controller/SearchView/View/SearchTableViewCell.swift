@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 class SearchTableViewCell: UITableViewCell {
 
     @IBOutlet weak var cellLabel: UILabel!
@@ -27,9 +28,9 @@ class SearchTableViewCell: UITableViewCell {
     
     
     
-    func handleCell(model: SearchMenuModel)  {
-        self.cellImage.image = UIImage(systemName: model.image)
-        self.cellLabel.text = model.name
+    func handleCell(name: String , image: String)  {
+        self.cellImage.image = UIImage(systemName: image)
+        self.cellLabel.text = name
     }
     
     static func nib() -> UINib{
@@ -37,3 +38,4 @@ class SearchTableViewCell: UITableViewCell {
         }
     
 }
+

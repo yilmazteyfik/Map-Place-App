@@ -30,9 +30,9 @@
 		CD3699962BECCB2C00AC17D8 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3699952BECCB2C00AC17D8 /* ApiManager.swift */; };
 		CD36999F2BECCB9E00AC17D8 /* SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD36999A2BECCB9E00AC17D8 /* SearchTableViewCell.xib */; };
 		CD3699A02BECCB9E00AC17D8 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD36999B2BECCB9E00AC17D8 /* SearchTableViewCell.swift */; };
-		CD3699A22BECCB9E00AC17D8 /* SearchMenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD36999E2BECCB9E00AC17D8 /* SearchMenuModel.swift */; };
 		CD3699A42BECCDB700AC17D8 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3699A32BECCDB700AC17D8 /* SearchViewController.swift */; };
 		CD3699A62BECCE6300AC17D8 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3699A52BECCE6300AC17D8 /* MapViewController.swift */; };
+		CDA12DF52BFF5A09007BAB1D /* SearchPlaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA12DF42BFF5A09007BAB1D /* SearchPlaceModel.swift */; };
 		CDCF42192BF235EB0091FC53 /* PlaceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDCF42182BF235EB0091FC53 /* PlaceCell.xib */; };
 		CDCF421C2BF235F80091FC53 /* PlaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCF421B2BF235F80091FC53 /* PlaceCell.swift */; };
 /* End PBXBuildFile section */
@@ -66,9 +66,9 @@
 		CD3699952BECCB2C00AC17D8 /* ApiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
 		CD36999A2BECCB9E00AC17D8 /* SearchTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchTableViewCell.xib; sourceTree = "<group>"; };
 		CD36999B2BECCB9E00AC17D8 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
-		CD36999E2BECCB9E00AC17D8 /* SearchMenuModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchMenuModel.swift; sourceTree = "<group>"; };
 		CD3699A32BECCDB700AC17D8 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		CD3699A52BECCE6300AC17D8 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		CDA12DF42BFF5A09007BAB1D /* SearchPlaceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlaceModel.swift; sourceTree = "<group>"; };
 		CDCF42182BF235EB0091FC53 /* PlaceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlaceCell.xib; sourceTree = "<group>"; };
 		CDCF421B2BF235F80091FC53 /* PlaceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -254,7 +254,7 @@
 		CD36999D2BECCB9E00AC17D8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				CD36999E2BECCB9E00AC17D8 /* SearchMenuModel.swift */,
+				CDA12DF42BFF5A09007BAB1D /* SearchPlaceModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -293,8 +293,6 @@
 			dependencies = (
 			);
 			name = "Map-Place-App";
-			packageProductDependencies = (
-			);
 			productName = "Map-Place-App";
 			productReference = A53846002BEB8BEC008C224E /* Map-Place-App.app */;
 			productType = "com.apple.product-type.application";
@@ -409,7 +407,7 @@
 				CD3699942BECCB2800AC17D8 /* CoreLocationManager.swift in Sources */,
 				A5C0EC6E2BED0ABA0081C0C9 /* Filter.swift in Sources */,
 				A5C0EC652BED09930081C0C9 /* CatagoryView.swift in Sources */,
-				CD3699A22BECCB9E00AC17D8 /* SearchMenuModel.swift in Sources */,
+				CDA12DF52BFF5A09007BAB1D /* SearchPlaceModel.swift in Sources */,
 				A5C0EC6C2BED0A900081C0C9 /* Place.swift in Sources */,
 				A5C0EC772BED0CAC0081C0C9 /* MapViewModel.swift in Sources */,
 				A5C0EC702BED0BCA0081C0C9 /* PlaceListViewModel.swift in Sources */,
