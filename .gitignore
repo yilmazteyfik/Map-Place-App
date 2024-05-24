@@ -91,4 +91,4 @@ fastlane/test_output
 iOSInjectionProject/
 
 # Ignore API key file
-API.rtf
+Map-Place-App/API.rtf
