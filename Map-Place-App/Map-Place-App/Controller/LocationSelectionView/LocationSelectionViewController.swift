@@ -321,7 +321,7 @@ extension LocationSelectionViewController {
                 return
             }
 
-            let url = "https://maps.googleapis.com/maps/api/directions/json?origin=\(firstLatitude),\(firstLongitude)&destination=\(secondLatitude),\(secondLongitude)&sensor=false&mode=driving&key=AIzaSyAV_h-oBi2Vhc_MEkn8SYYJxflzT4ylIRM"
+            let url = "https://maps.googleapis.com/maps/api/directions/json?origin=\(firstLatitude),\(firstLongitude)&destination=\(secondLatitude),\(secondLongitude)&sensor=false&mode=driving&key=\(APIKeyProvider.googleMapsAPIKey)"
             stringURL = url
             print(stringURL)
             printLocations()

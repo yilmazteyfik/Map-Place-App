@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		815B61812BF23A4B00FC8BF8 /* PlaceDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815B61802BF23A4B00FC8BF8 /* PlaceDetailViewController.swift */; };
+		A52BF8C32C01276000A0A7B5 /* API.rtf in Resources */ = {isa = PBXBuildFile; fileRef = A52BF8C22C01276000A0A7B5 /* API.rtf */; };
+		A52BF8C52C0127D600A0A7B5 /* API_Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52BF8C42C0127D600A0A7B5 /* API_Key.swift */; };
 		A53846042BEB8BEC008C224E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53846032BEB8BEC008C224E /* AppDelegate.swift */; };
 		A53846062BEB8BEC008C224E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53846052BEB8BEC008C224E /* SceneDelegate.swift */; };
 		A53846082BEB8BEC008C224E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53846072BEB8BEC008C224E /* ViewController.swift */; };
@@ -38,10 +40,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1A15CD36440DF451907E546E /* Pods_Map_Place_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Map_Place_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DA49D28BC30D36D983D076E /* Pods-Map-Place-App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Map-Place-App.release.xcconfig"; path = "Target Support Files/Pods-Map-Place-App/Pods-Map-Place-App.release.xcconfig"; sourceTree = "<group>"; };
 		479065336702A5B8638EA599 /* Pods-Map-Place-App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Map-Place-App.debug.xcconfig"; path = "Target Support Files/Pods-Map-Place-App/Pods-Map-Place-App.debug.xcconfig"; sourceTree = "<group>"; };
 		815B61802BF23A4B00FC8BF8 /* PlaceDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailViewController.swift; sourceTree = "<group>"; };
+		A52BF8C22C01276000A0A7B5 /* API.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = API.rtf; sourceTree = "<group>"; };
+		A52BF8C42C0127D600A0A7B5 /* API_Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API_Key.swift; sourceTree = "<group>"; };
 		A53846002BEB8BEC008C224E /* Map-Place-App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Map-Place-App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A53846032BEB8BEC008C224E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A53846052BEB8BEC008C224E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -96,7 +99,6 @@
 		7320C1649E170C143E4C1C8B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1A15CD36440DF451907E546E /* Pods_Map_Place_App.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -138,6 +140,7 @@
 				A538460C2BEB8BEE008C224E /* Assets.xcassets */,
 				A538460E2BEB8BEE008C224E /* LaunchScreen.storyboard */,
 				A53846112BEB8BEE008C224E /* Info.plist */,
+				A52BF8C22C01276000A0A7B5 /* API.rtf */,
 			);
 			name = Support;
 			sourceTree = "<group>";
@@ -238,6 +241,7 @@
 				A5C0EC6D2BED0ABA0081C0C9 /* Filter.swift */,
 				A5C0EC762BED0CAC0081C0C9 /* MapViewModel.swift */,
 				A5F61C7A2BFE855500E134C3 /* DirectionAPIModel.swift */,
+				A52BF8C42C0127D600A0A7B5 /* API_Key.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -341,6 +345,7 @@
 				A53846242BEB8F98008C224E /* Main.storyboard in Resources */,
 				CD36999F2BECCB9E00AC17D8 /* SearchTableViewCell.xib in Resources */,
 				A538460D2BEB8BEE008C224E /* Assets.xcassets in Resources */,
+				A52BF8C32C01276000A0A7B5 /* API.rtf in Resources */,
 				CDCF42192BF235EB0091FC53 /* PlaceCell.xib in Resources */,
 				A53846102BEB8BEE008C224E /* Base in Resources */,
 			);
@@ -405,6 +410,7 @@
 				CD3699962BECCB2C00AC17D8 /* ApiManager.swift in Sources */,
 				CD3699A02BECCB9E00AC17D8 /* SearchTableViewCell.swift in Sources */,
 				CD3699942BECCB2800AC17D8 /* CoreLocationManager.swift in Sources */,
+				A52BF8C52C0127D600A0A7B5 /* API_Key.swift in Sources */,
 				A5C0EC6E2BED0ABA0081C0C9 /* Filter.swift in Sources */,
 				A5C0EC652BED09930081C0C9 /* CatagoryView.swift in Sources */,
 				CDA12DF52BFF5A09007BAB1D /* SearchPlaceModel.swift in Sources */,

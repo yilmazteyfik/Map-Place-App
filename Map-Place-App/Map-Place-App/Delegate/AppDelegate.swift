@@ -15,11 +15,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        guard let apiKey = Bundle.main.object(forInfoDictionaryKey: "GoogleMapsAPI") as? String else {
-                       fatalError("Google Maps API anahtarı eksik veya yanlış konumda")
-                   }
-        GMSServices.provideAPIKey(apiKey)
-        GMSPlacesClient.provideAPIKey(apiKey)
+        
+        
+        GMSServices.provideAPIKey(APIKeyProvider.googleMapsAPIKey)
+        GMSPlacesClient.provideAPIKey(APIKeyProvider.googleMapsAPIKey)
         
         return true
     }
