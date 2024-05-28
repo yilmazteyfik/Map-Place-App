@@ -75,23 +75,31 @@ class PlaceListViewController: UIViewController,UITableViewDelegate, UITableView
       return displayedPlaces.count
   }
   
-  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func handlePlacePhoto( place: GMSPlace , onComplete:@escaping (UIImage?) -> () ) {
+        if let image = place.photos?.first{
+            
+            self.placesClient.loadPlacePhoto(image) { (photo, error) in
+                if let error = error{
+                    print("Error loading photo metadata: \(error.localizedDescription)")
+                    
+                } else{
+                    onComplete(photo)
+                }
+            }
+        }
+         
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
     let cell = tableView.dequeueReusableCell(withIdentifier: PlaceCell.identifier, for: indexPath) as! PlaceCell
       //print("name: \(self.viewModel.placeList[indexPath.row].name ??  "Place")")
       let place = displayedPlaces[indexPath.row]
       cell.placeNameLabel.text = place.name
     cell.placeDetailLabel.text = place.formattedAddress
-    if let image = place.photos?.first{
-      self.placesClient.loadPlacePhoto(image) { (photo, error) in
-        if let error = error{
-          print("Error loading photo metadata: \(error.localizedDescription)")
-          return
-        } else{
-          cell.placeDetailImage.image = photo
+        self.handlePlacePhoto(place: place) { image in
+            cell.placeDetailImage.image = image
         }
-      }
-    }
     return cell
   }
     func loadMoreData() {
@@ -119,37 +127,29 @@ class PlaceListViewController: UIViewController,UITableViewDelegate, UITableView
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
      
-      print("clicked")
       let storyboard = UIStoryboard(name: "Main", bundle: nil)
 
       let placeDetailView = storyboard.instantiateViewController(withIdentifier: PlaceDetailViewController.identifier) as! PlaceDetailViewController
       
-      var place =  self.viewModel.placeList[indexPath.row]
+      let place =  self.viewModel.placeList[indexPath.row]
+      
+      print(place)
       
       placeDetailView.name = place.name
-      placeDetailView.type = place.types?.first
+      placeDetailView.type = place.types?.first?.capitalized
       placeDetailView.score = place.rating
       placeDetailView.address = place.formattedAddress
-      placeDetailView.desc = place.description
-      
-      
+      placeDetailView.desc = place.website?.absoluteString
+      placeDetailView.ratingCount = place.userRatingsTotal
+      placeDetailView.coordinate = place.coordinate
+      self.handlePlacePhoto(place: place) { image in
+          placeDetailView.image = image
+      }
+     // placeDetailView.image = handlePlacePhoto(place: place)
       
       
       self.navigationController?.pushViewController(placeDetailView, animated: true)
-//      let locationLat = self.viewModel.placeList[indexPath.row].coordinate.latitude
-//    let locationLong = self.viewModel.placeList[indexPath.row].coordinate.longitude
-//    
-//    if (UIApplication.shared.canOpenURL(URL(string: "comgooglemaps://")!)){
-//      
-//      if let url = URL(string: "comgooglemaps-x-callback://??saddr=&addr=\(locationLat),\(locationLong)&directionsmode=driving") {
-//        UIApplication.shared.open(url,options: [:])
-//      }
-//    } else {
-//      if let urlDestination = URL.init(string: "https://www.google.co.in/maps/dir/?saddr=&daddr=\(locationLat),\(locationLong)&directionsmode=driving"){
-//        UIApplication.shared.open(urlDestination)
-//        
-//      }
-//    }
+
     
   }
   
