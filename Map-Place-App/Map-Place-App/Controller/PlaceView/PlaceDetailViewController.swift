@@ -39,7 +39,7 @@ class PlaceDetailViewController: UIViewController {
      func setup(){
          if let image = image {
              self.detailImage.image = image
-
+             print("Image: \(image)")
          }
          self.detailNameLabel.text = name
          if let type = type {

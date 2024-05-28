@@ -114,6 +114,7 @@ class PlaceListViewController: UIViewController,UITableViewDelegate, UITableView
             
             tableView.reloadData()
         }
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
             let offsetY = scrollView.contentOffset.y
             let contentHeight = scrollView.contentSize.height
