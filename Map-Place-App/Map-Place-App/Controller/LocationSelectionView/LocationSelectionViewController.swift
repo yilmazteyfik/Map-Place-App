@@ -131,7 +131,7 @@ extension LocationSelectionViewController {
         self.navigationController?.pushViewController(placeListViewController, animated: true)
     }
     func setPlaces(){
-        print(locationName)
+       
         if isLocationSelected{
             if buttonIndex == 0 {
                 locationSelectionView.enterLocationTextField[buttonIndex].text = locationName
@@ -223,7 +223,7 @@ extension LocationSelectionViewController : CLLocationManagerDelegate{
             latitude = location.coordinate.latitude
             longitude = location.coordinate.longitude
             setupMap()
-            print(latitude ?? 0)
+
             buildMarker(position: CLLocationCoordinate2D(latitude: latitude!, longitude: longitude!), title: "Me")
       }
     }

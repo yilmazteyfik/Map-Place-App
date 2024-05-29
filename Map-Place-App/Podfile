@@ -6,6 +6,7 @@ target 'Map-Place-App' do
   use_frameworks!
   pod 'GoogleMaps' , '4.0.0'
   pod 'GooglePlaces' , '4.0.0'
+
   # Pods for Map-Place-App
 
 end

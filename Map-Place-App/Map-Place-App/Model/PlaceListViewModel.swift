@@ -29,21 +29,19 @@ final class PlaceListViewModel {
         var location2: String = ""
         if let latitude = mapViewModel.firstCoordinate?.latitude, let longitude = mapViewModel.firstCoordinate?.longitude {
             location1 = "\(latitude),\(longitude)"
-//            print(location1)
         } else {
             print("Koordinat bulunamadı")
         }
         
         if let latitude = mapViewModel.secondCoordinate?.latitude, let longitude = mapViewModel.secondCoordinate?.longitude {
             location2 = "\(latitude),\(longitude)"
-//            print(location2)
         } else {
             print("Koordinat bulunamadı")
         }
         
         GooglePlacesManeger.shared.findPlacesBetweenLocations(location1: location1, location2: location2) { places in
             self.placeList = places
-            //print("GelenSonuc \(places.count)")
+
         }
         
     }
@@ -73,9 +71,9 @@ extension PlaceListViewModel {
                                             continue
                                         } else {
                                             self.placeList.append(place)
-                                            //(print(name)
+                                            
                                         }
-                                        //tableView.reloadData()
+                                        
                                     } else if (keyWord == "-1"){
                                         if self.placeList.contains(place){
                                             continue
@@ -87,32 +85,33 @@ extension PlaceListViewModel {
                                 self.removeDublicationPlaceList()
                             }
                             if (!isCategorySelected){
-                                print("lolo")
+                                
                                 if let types = place.types, types.contains("food") || types.contains("cafe") || types.contains("restaurant") || types.contains("bar") || types.contains("pub") || types.contains("fast_food") || types.contains("fine_dining") ||
                                     types.contains("bakery") || types.contains("ice_cream_shop") {
                                     if let name = place.name?.lowercased() , name.contains(keyWord.lowercased()), keyWord != "-1"{
                                         if !(self.placeList.contains(place)){
                                             self.placeList.append(place)
-                                            //print(name)
+                                            
                                         }
                                         
                                     } else if (keyWord == "-1"){
                                         if !(self.placeList.contains(place)){
-                                           self.placeList.append(place)
+                                            self.placeList.append(place)
                                         }
                                     }
                                 }
                             }
                             self.removeDublicationPlaceList()
                         }
-                        DispatchQueue.main.async {
-                            tableView.reloadData()
-                        }
+                        
                         
                     }
                 }
+                
             }
         }
+        self.removeDublicationPlaceList()
+        
     }
     
     func listLikelyPlaces(tableView: UITableView, placesClient: GMSPlacesClient) {
@@ -153,9 +152,8 @@ extension PlaceListViewModel {
                                            continue
                                        } else {
                                            self.placeList.append(place)
-                                           print(name)
+                                           
                                        }
-                                       //tableView.reloadData()
                                    } else if (keyWord == "-1"){
                                        if self.placeList.contains(place){
                                            continue
@@ -170,7 +168,7 @@ extension PlaceListViewModel {
                                     types.contains("bakery") || types.contains("ice_cream_shop") {
                                    if let name = place.name?.lowercased() , name.contains(keyWord.lowercased()), keyWord != "-1"{
                                        self.placeList.append(place)
-                                       print(name)
+                                       
                                    } else if (keyWord == "-1"){
                                        self.placeList.append(place)
                                    }

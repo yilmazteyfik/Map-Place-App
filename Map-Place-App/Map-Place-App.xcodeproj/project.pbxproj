@@ -101,6 +101,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		A506244E2C04C23900F28427 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		A53845F72BEB8BEC008C224E = {
 			isa = PBXGroup;
 			children = (
@@ -122,6 +129,7 @@
 		A53846022BEB8BEC008C224E /* Map-Place-App */ = {
 			isa = PBXGroup;
 			children = (
+				A506244E2C04C23900F28427 /* Extension */,
 				A5C0EC6A2BED0A6B0081C0C9 /* Model */,
 				A538461D2BEB8C5C008C224E /* Manager */,
 				A538461B2BEB8C47008C224E /* View */,
@@ -567,7 +575,7 @@
 				DEVELOPMENT_TEAM = 24499S849C;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				EXCLUDED_ARCHS = "";
-				"EXCLUDED_ARCHS[sdk=*]" = arm64;
+				"EXCLUDED_ARCHS[sdk=*]" = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Map-Place-App/Info.plist";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We need access your location";
@@ -603,7 +611,6 @@
 				DEVELOPMENT_TEAM = 24499S849C;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				EXCLUDED_ARCHS = "";
-				"EXCLUDED_ARCHS[sdk=*]" = arm64;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Map-Place-App/Info.plist";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We need access your location";
