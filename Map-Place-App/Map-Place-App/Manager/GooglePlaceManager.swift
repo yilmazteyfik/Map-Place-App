@@ -179,7 +179,6 @@ final class GooglePlacesManeger{
                                     if let place = place {
                                         places.append(place)
                                         if places.count == results.count {
-                                            print("Sonuc: \(places.count)")
                                             completion(places)
                                         }
                                     } else {
