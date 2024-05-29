@@ -102,28 +102,38 @@ class PlaceListViewController: UIViewController, UITableViewDelegate, UITableVie
             }
             .store(in: &cancelable)
     }
+    func handlePlacePhoto( place: GMSPlace , onComplete:@escaping (UIImage?) -> () ) {
+            if let image = place.photos?.first{
+                
+                self.placesClient.loadPlacePhoto(image) { (photo, error) in
+                    if let error = error{
+                        print("Error loading photo metadata: \(error.localizedDescription)")
+                        
+                    } else{
+                        onComplete(photo)
+                    }
+                }
+            }
+             
+        }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return displayedPlaces.count
     }
   
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: PlaceCell.identifier, for: indexPath) as! PlaceCell
-        let place = displayedPlaces[indexPath.row]
-        cell.placeNameLabel.text = place.name
+          //print("name: \(self.viewModel.placeList[indexPath.row].name ??  "Place")")
+          let place = displayedPlaces[indexPath.row]
+          cell.placeNameLabel.text = place.name
         cell.placeDetailLabel.text = place.formattedAddress
-        if let image = place.photos?.first {
-            placesClient.loadPlacePhoto(image) { (photo, error) in
-                if let error = error {
-                    print("Error loading photo metadata: \(error.localizedDescription)")
-                    cell.placeDetailImage.image = UIImage(named: "default_image") // Set a default image
-                    return
-                }
-                cell.placeDetailImage.image = photo
+            self.handlePlacePhoto(place: place) { image in
+                cell.placeDetailImage.image = image
             }
-        }
         return cell
-    }
+      }
 
     private func loadMoreData() {
         let start = currentPage * pageSize
@@ -152,17 +162,30 @@ class PlaceListViewController: UIViewController, UITableViewDelegate, UITableVie
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let placeDetailView = storyboard.instantiateViewController(withIdentifier: PlaceDetailViewController.identifier) as! PlaceDetailViewController
         
-        let place = viewModel.placeList[indexPath.row]
-        
-        placeDetailView.name = place.name
-        placeDetailView.type = place.types?.first
-        placeDetailView.score = place.rating
-        placeDetailView.address = place.formattedAddress
-        placeDetailView.desc = place.description
-        
-        navigationController?.pushViewController(placeDetailView, animated: true)
-    }
+         let storyboard = UIStoryboard(name: "Main", bundle: nil)
+
+         let placeDetailView = storyboard.instantiateViewController(withIdentifier: PlaceDetailViewController.identifier) as! PlaceDetailViewController
+         
+         let place =  self.viewModel.placeList[indexPath.row]
+         
+         print(place)
+         
+         placeDetailView.name = place.name
+         placeDetailView.type = place.types?.first?.capitalized
+         placeDetailView.score = place.rating
+         placeDetailView.address = place.formattedAddress
+         placeDetailView.desc = place.website?.absoluteString
+         placeDetailView.ratingCount = place.userRatingsTotal
+         placeDetailView.coordinate = place.coordinate
+         self.handlePlacePhoto(place: place) { image in
+             placeDetailView.image = image
+         }
+        // placeDetailView.image = handlePlacePhoto(place: place)
+         
+         
+         self.navigationController?.pushViewController(placeDetailView, animated: true)
+
+       
+     }
 }

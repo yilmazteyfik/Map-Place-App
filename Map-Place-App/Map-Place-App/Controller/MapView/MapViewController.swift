@@ -24,7 +24,7 @@ class MapViewController: UIViewController {
     var mapView : GMSMapView?
     var zoom: Float = 15
       
-    
+    private let viewModel : MapViewModel = MapViewModel.instance
     private var cancelable : Set<AnyCancellable> = []
     private let coreLocationManager : CoreLocationManager = CoreLocationManager.instance
     
@@ -45,7 +45,7 @@ class MapViewController: UIViewController {
             }else{
                 locationManager.startUpdatingLocation()
             }
-
+    setupBinders()
     }
     
       @IBAction func zoomIn(_ sender: Any) {
@@ -111,6 +111,30 @@ extension MapViewController : CLLocationManagerDelegate {
         
     }
     
+    func setupBinders() {
+        removeAllMarkers()
+        
+        viewModel.$isClickedEnterLocations.sink { value in
+            self.buildMarker(position: self.viewModel.firstCoordinate!, title: "First Location")
+            self.buildMarker(position: self.viewModel.secondCoordinate!, title: "Second Location")
+            if value != nil {
+                
+                PlaceListViewModel.instance.fetchPlaces()
+                
+                self.coreLocationManager.formatLocationName(in: self.viewModel.firstLocation ?? "") { origin in
+                    self.coreLocationManager.formatLocationName(in: self.viewModel.secondLocation ?? "") { destination in
+                        self.coreLocationManager.updateUIView({ points in
+                             self.addPolyLineWithEncodedStringInMap(encodedString: points)
+                        }, origin: origin,destination: destination)
+                    }
+                }
+                
+                
+            }
+
+        }.store(in: &cancelable)
+    }
+
     
     
     func addPolyLineWithEncodedStringInMap(encodedString: String) {

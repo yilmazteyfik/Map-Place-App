@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6A70F84DDB679B35115B933A /* Pods_Map_Place_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1912178C6E6804F3D6E15BB /* Pods_Map_Place_App.framework */; };
 		815B61812BF23A4B00FC8BF8 /* PlaceDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815B61802BF23A4B00FC8BF8 /* PlaceDetailViewController.swift */; };
 		A52BF8C52C0127D600A0A7B5 /* API_Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52BF8C42C0127D600A0A7B5 /* API_Key.swift */; };
 		A53846042BEB8BEC008C224E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53846032BEB8BEC008C224E /* AppDelegate.swift */; };
@@ -63,6 +64,7 @@
 		A5C0EC6F2BED0BCA0081C0C9 /* PlaceListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceListViewModel.swift; sourceTree = "<group>"; };
 		A5C0EC762BED0CAC0081C0C9 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		A5F61C7A2BFE855500E134C3 /* DirectionAPIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionAPIModel.swift; sourceTree = "<group>"; };
+		B1912178C6E6804F3D6E15BB /* Pods_Map_Place_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Map_Place_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD3699932BECCB2800AC17D8 /* CoreLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreLocationManager.swift; sourceTree = "<group>"; };
 		CD3699952BECCB2C00AC17D8 /* ApiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
 		CD36999A2BECCB9E00AC17D8 /* SearchTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchTableViewCell.xib; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A70F84DDB679B35115B933A /* Pods_Map_Place_App.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,6 +100,7 @@
 		7320C1649E170C143E4C1C8B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B1912178C6E6804F3D6E15BB /* Pods_Map_Place_App.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -296,12 +300,15 @@
 				A53845FD2BEB8BEC008C224E /* Frameworks */,
 				A53845FE2BEB8BEC008C224E /* Resources */,
 				F1A4CCA9708CFB19286643BE /* [CP] Copy Pods Resources */,
+				A294F9126DF416B133928B77 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = "Map-Place-App";
+			packageProductDependencies = (
+			);
 			productName = "Map-Place-App";
 			productReference = A53846002BEB8BEC008C224E /* Map-Place-App.app */;
 			productType = "com.apple.product-type.application";
@@ -378,6 +385,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A294F9126DF416B133928B77 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Map-Place-App/Pods-Map-Place-App-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Map-Place-App/Pods-Map-Place-App-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Map-Place-App/Pods-Map-Place-App-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F1A4CCA9708CFB19286643BE /* [CP] Copy Pods Resources */ = {
