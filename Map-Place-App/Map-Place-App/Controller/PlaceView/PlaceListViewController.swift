@@ -35,7 +35,7 @@ class PlaceListViewController: UIViewController, UITableViewDelegate, UITableVie
 
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        viewModel.placeList = []
+      //  viewModel.placeList = []
     }
 
     override func viewDidLoad() {

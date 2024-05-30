@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Kingfisher
 import CoreLocation
 class PlaceDetailViewController: UIViewController {
 
@@ -52,8 +51,8 @@ class PlaceDetailViewController: UIViewController {
              self.detailAddressLabel.text = "Address: \(address)"
          }
          
-         if desc != nil {
-             self.webSiteLabel.text = "Website: \(String(describing: desc))"
+         if let webSite = desc {
+             self.webSiteLabel.text = "Website: \(webSite)"
 
          }
    }

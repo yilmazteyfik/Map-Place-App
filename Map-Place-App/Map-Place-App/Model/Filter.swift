@@ -24,8 +24,7 @@ final class FilterModel {
     @Published var distance : Double = -1
     
     
-    init() {
-        self.categories = []
+    fileprivate func initCategories() {
         categories.append(Category(name: "restaurant", flag: false))
         categories.append(Category(name: "cafe", flag: false))
         categories.append(Category(name: "bar", flag: false))
@@ -34,6 +33,11 @@ final class FilterModel {
         categories.append(Category(name: "fine_dining", flag: false))
         categories.append(Category(name: "bakery", flag: false))
         categories.append(Category(name: "ice_cream_shop", flag: false))
+    }
+    
+    init() {
+        self.categories = []
+        initCategories()
         
     }
     func setKeyWord(value : String){
@@ -53,6 +57,13 @@ final class FilterModel {
         }
         print("key word : \(key_word)")
         print("distance : \(distance)")
+    }
+    
+    func clearAll()  {
+        self.categories = []
+        self.initCategories()
+        self.key_word = "-1"
+        self.distance = -1
     }
 
 }

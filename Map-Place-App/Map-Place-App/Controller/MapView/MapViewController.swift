@@ -115,8 +115,10 @@ extension MapViewController : CLLocationManagerDelegate {
         removeAllMarkers()
         
         viewModel.$isClickedEnterLocations.sink { value in
-            self.buildMarker(position: self.viewModel.firstCoordinate!, title: "First Location")
-            self.buildMarker(position: self.viewModel.secondCoordinate!, title: "Second Location")
+            
+        
+            self.buildMarker(position: self.viewModel.firstCoordinate, title: "First Location")
+            self.buildMarker(position: self.viewModel.secondCoordinate, title: "Second Location")
             if value != nil {
                 
                 PlaceListViewModel.instance.fetchPlaces()
@@ -160,7 +162,10 @@ extension MapViewController : CLLocationManagerDelegate {
 
         }
     
-    func buildMarker(position: CLLocationCoordinate2D , title: String) {
+    func buildMarker(position: CLLocationCoordinate2D? , title: String) {
+        guard let position = position else {
+            return
+        }
         let marker = GMSMarker()
         marker.position = position
         marker.title = title

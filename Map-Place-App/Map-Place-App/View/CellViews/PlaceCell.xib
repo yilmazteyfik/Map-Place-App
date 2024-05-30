@@ -22,7 +22,7 @@
                         <rect key="frame" x="16" y="16" width="416" height="380"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ytg-IX-fgv">
-                                <rect key="frame" x="8" y="8" width="400" height="200"/>
+                                <rect key="frame" x="8" y="74.333333333333314" width="400" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="400" id="0hG-G1-nWv"/>
                                     <constraint firstAttribute="width" secondItem="ytg-IX-fgv" secondAttribute="height" multiplier="2:1" id="bzy-sD-UuP"/>
@@ -30,31 +30,17 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Place Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Uj-Pl-Bsn">
-                                <rect key="frame" x="16" y="220" width="384" height="24"/>
+                                <rect key="frame" x="16" y="286.33333333333331" width="384" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="A warm and inviting cafe serving freshly brewed cofee and pasteries" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mPt-Jn-f7Z">
-                                <rect key="frame" x="16" y="255.99999999999997" width="384" height="33.666666666666657"/>
+                                <rect key="frame" x="16" y="322.33333333333331" width="384" height="33.666666666666686"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XC6-W5-6sC">
-                                <rect key="frame" x="16" y="301.66666666666669" width="384" height="32"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="32" id="BXf-mq-UFQ"/>
-                                </constraints>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="View Details">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="viewDetailTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Qc0-xd-KLk"/>
-                                </connections>
-                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="56u-2b-oYq">
                                 <rect key="frame" x="88" y="368" width="240" height="12"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
@@ -65,14 +51,11 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemGray6Color"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="XC6-W5-6sC" secondAttribute="trailing" constant="16" id="5Tc-eM-rPW"/>
                             <constraint firstAttribute="trailing" secondItem="6Uj-Pl-Bsn" secondAttribute="trailing" constant="16" id="8Zt-Fr-e3R"/>
                             <constraint firstAttribute="trailing" secondItem="mPt-Jn-f7Z" secondAttribute="trailing" constant="16" id="9u9-4y-9UW"/>
-                            <constraint firstItem="XC6-W5-6sC" firstAttribute="leading" secondItem="aSp-uA-isx" secondAttribute="leading" constant="16" id="EoP-ER-BGf"/>
                             <constraint firstAttribute="bottom" secondItem="56u-2b-oYq" secondAttribute="bottom" id="KAj-1b-FPP"/>
                             <constraint firstItem="6Uj-Pl-Bsn" firstAttribute="leading" secondItem="aSp-uA-isx" secondAttribute="leading" constant="16" id="M7g-nD-oq6"/>
                             <constraint firstItem="ytg-IX-fgv" firstAttribute="top" secondItem="aSp-uA-isx" secondAttribute="top" constant="8" id="Scf-ic-Rbv"/>
-                            <constraint firstItem="56u-2b-oYq" firstAttribute="top" secondItem="XC6-W5-6sC" secondAttribute="bottom" id="afC-yf-R9J"/>
                             <constraint firstItem="mPt-Jn-f7Z" firstAttribute="leading" secondItem="aSp-uA-isx" secondAttribute="leading" constant="16" id="pMZ-7c-9o1"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
@@ -89,7 +72,6 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="placeDetailButton" destination="XC6-W5-6sC" id="f7Z-6C-Go1"/>
                 <outlet property="placeDetailImage" destination="ytg-IX-fgv" id="wms-eF-cS9"/>
                 <outlet property="placeDetailLabel" destination="mPt-Jn-f7Z" id="px4-Ft-9ek"/>
                 <outlet property="placeNameLabel" destination="6Uj-Pl-Bsn" id="Lkz-vH-2Q6"/>
@@ -99,7 +81,7 @@
     </objects>
     <resources>
         <systemColor name="systemGray6Color">
-            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

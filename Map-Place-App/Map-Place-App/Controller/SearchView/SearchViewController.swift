@@ -21,7 +21,8 @@ class SearchViewController: UIViewController {
     var isLoadLocations : Bool = false
     weak var delegate : SearchLocationViewControllerDelegate?
 
-
+    @IBOutlet weak var clearHistoryButton: UIButton!
+    
     var historyPlace : [SearchPlaceModel] =  []
     
     func fetchHistoryPlaces() {
@@ -29,13 +30,14 @@ class SearchViewController: UIViewController {
         let decoder = JSONDecoder()
         
         if let data = userDefaults.data(forKey: "historyPlace"),
-           let decodedArray = try? decoder.decode([SearchPlaceModel].self, from: data) {
+           var decodedArray = try? decoder.decode([SearchPlaceModel].self, from: data) {
+            decodedArray.reverse()
             historyPlace = decodedArray
+            
         } else {
             historyPlace = []
         }
         
-        print("array \(historyPlace)")
         self.menuTableView.reloadData() // Assuming menuTableView is a UITableView
     }
     
@@ -46,6 +48,16 @@ class SearchViewController: UIViewController {
         menuTableView.delegate = self
         menuTableView.register(SearchTableViewCell.nib(), forCellReuseIdentifier: SearchTableViewCell.identifier)
         fetchHistoryPlaces()
+        clearHistoryButton.addTarget(self, action: #selector(clearHistoryPlaces), for: .touchUpInside)
+    }
+    
+   @objc func clearHistoryPlaces(_ sender: UIButton)  {
+       print("clicked")
+        historyPlace = []
+        self.menuTableView.reloadData()
+        let userDefaults = UserDefaults.standard
+        userDefaults.removeObject(forKey: "historyPlace")
+          
     }
 
   
@@ -162,14 +174,21 @@ extension SearchViewController : UITableViewDelegate , UITableViewDataSource {
             array = decodedArray
         }
         
-        array.append(SearchPlaceModel(name: name, coordinate: coordinate))
+        
+        let isContain = array.contains { $0.name == name }
+        
+
+        if !isContain  {
+            array.append(SearchPlaceModel(name: name, coordinate: coordinate))
+        }
+        
+        
         
         if let encodedData = try? encoder.encode(array) {
             userDefaults.set(encodedData, forKey: "historyPlace")
         }
         
-        print(name)
-        print(coordinate)
+       
     }
         
         

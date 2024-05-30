@@ -12,7 +12,6 @@ class PlaceCell: UITableViewCell {
     @IBOutlet weak var placeDetailImage: UIImageView!
     @IBOutlet weak var placeNameLabel: UILabel!
     @IBOutlet weak var placeDetailLabel: UILabel!
-    @IBOutlet weak var placeDetailButton: UIButton!
     
     static let identifier = "placeCell"
     
@@ -24,7 +23,6 @@ class PlaceCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         selectionStyle = .none
-        placeDetailButton.addTarget(self, action: #selector(viewDetailTapped), for: .touchUpInside)
         
     }
 
@@ -32,7 +30,5 @@ class PlaceCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    @IBAction func viewDetailTapped(_ sender: UIButton) {
-        
-    }
+    
 }

@@ -24,6 +24,8 @@ final class MapViewModel {
     func clearLocations()  {
         firstLocation = nil
         secondLocation = nil
+        firstCoordinate =  CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0)
+        secondCoordinate =   CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0)
     }
     
     func setFirstLocation(value:String)  {
