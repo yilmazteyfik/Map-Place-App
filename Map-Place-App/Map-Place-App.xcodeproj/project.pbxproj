@@ -148,8 +148,8 @@
 			isa = PBXGroup;
 			children = (
 				A538460C2BEB8BEE008C224E /* Assets.xcassets */,
-				A538460E2BEB8BEE008C224E /* LaunchScreen.storyboard */,
 				A53846112BEB8BEE008C224E /* Info.plist */,
+				A538460E2BEB8BEE008C224E /* LaunchScreen.storyboard */,
 			);
 			name = Support;
 			sourceTree = "<group>";
