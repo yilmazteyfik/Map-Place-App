@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>GoogleMapsAPI</key>
-	<string>AIzaSyAV_h-oBi2Vhc_MEkn8SYYJxflzT4ylIRM</string>
+	<string>YOUR_API_KEY</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>comgooglemaps</string>
