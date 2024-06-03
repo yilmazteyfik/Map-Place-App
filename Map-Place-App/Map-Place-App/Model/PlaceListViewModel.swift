@@ -59,6 +59,9 @@ extension PlaceListViewModel {
                 for place in places {
                     let selectedCategories = FilterModel.instance.categories.filter { $0.flag }.map { $0.name }
                     var isCategorySelected = false
+                    if(!selectedCategories.isEmpty){
+                        isCategorySelected = true
+                    }
                     FilterModel.instance.$key_word.sink { keyWord in
                         // Loop through each likelihood
                         if let types = place.types {
@@ -85,6 +88,7 @@ extension PlaceListViewModel {
                                 self.removeDublicationPlaceList()
                             }
                             if (!isCategorySelected){
+                                print("catagory is not selected")
                                 
                                 if let types = place.types, types.contains("food") || types.contains("cafe") || types.contains("restaurant") || types.contains("bar") || types.contains("pub") || types.contains("fast_food") || types.contains("fine_dining") ||
                                     types.contains("bakery") || types.contains("ice_cream_shop") {
@@ -130,28 +134,28 @@ extension PlaceListViewModel {
                    return
                }
 
-               // Get selected categories from FilterModel
                let selectedCategories = FilterModel.instance.categories.filter { $0.flag }.map { $0.name }
+               self.filterModel.printValues()
                var isCategorySelected = false
-               // Use Combine to listen for changes in key_word
+               if(!selectedCategories.isEmpty){
+                   isCategorySelected = true
+               }
                FilterModel.instance.$key_word.sink { keyWord in
-                   // Loop through each likelihood
                    
                    for likelihood in placeLikelihoods {
                        let place = likelihood.place
 
-                       // Check if any of the selected categories match the place types
-                       
                        if let types = place.types {
+                          
                            for category in selectedCategories {
-                               // Check if the place types contain selected category and the place name contains the keyword
                                if types.contains(category){
-                                   isCategorySelected = true
+                                   
                                    if let name = place.name?.lowercased() , name.contains(keyWord.lowercased()), keyWord != "-1"{
                                        if self.placeList.contains(place){
                                            continue
                                        } else {
                                            self.placeList.append(place)
+                                           print("seçilmiş mekan category : \(category)")
                                            
                                        }
                                    } else if (keyWord == "-1"){
@@ -159,11 +163,14 @@ extension PlaceListViewModel {
                                            continue
                                        } else {
                                            self.placeList.append(place)
+                                           print("seçilmiş mekan category : \(category)")
                                        }
                                    }
                                }
                            }
+
                            if (!isCategorySelected){
+                               print("catagory is not selected")
                                if let types = place.types, types.contains("food") || types.contains("cafe") || types.contains("restaurant") || types.contains("bar") || types.contains("pub") || types.contains("fast_food") || types.contains("fine_dining") ||
                                     types.contains("bakery") || types.contains("ice_cream_shop") {
                                    if let name = place.name?.lowercased() , name.contains(keyWord.lowercased()), keyWord != "-1"{
@@ -179,7 +186,7 @@ extension PlaceListViewModel {
                            tableView.reloadData()
                        }
                    }
-               }.store(in: &self.cancelable) // Store the cancellable to avoid memory leaks
+               }.store(in: &self.cancelable)
            }
        }
     func removeDublicationPlaceList(){

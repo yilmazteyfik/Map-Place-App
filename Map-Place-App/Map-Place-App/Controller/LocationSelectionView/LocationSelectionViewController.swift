@@ -130,8 +130,8 @@ extension LocationSelectionViewController {
         filterModel.printValues()
         self.navigationController?.pushViewController(placeListViewController, animated: true)
         
-        self.filterModel.clearAll()
-        viewModel.clearLocations()
+        //self.filterModel.clearAll()
+        //viewModel.clearLocations()
     }
     func setPlaces(){
        
