@@ -111,9 +111,9 @@ class LocationSelectionView: UIView {
         slider.addTarget(self, action: #selector(sliderValueChanged), for: .valueChanged)
         return slider
       }()
-    let searchButton: UIButton = {
+    let clearButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Ara", for: .normal)
+        button.setTitle("Clear", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .black
@@ -169,7 +169,7 @@ extension LocationSelectionView {
         scrollView.addSubview(label)
         scrollView.addSubview(enterLocation1TextField)
         scrollView.addSubview(enterLocation2TextField)
-        scrollView.addSubview(searchButton)
+        scrollView.addSubview(clearButton)
         scrollView.addSubview(filterButton)
         scrollView.addSubview(catagoryView)
         scrollView.addSubview(catagory_label)
@@ -183,7 +183,7 @@ extension LocationSelectionView {
         label.translatesAutoresizingMaskIntoConstraints = false
         enterLocation1TextField.translatesAutoresizingMaskIntoConstraints = false
         enterLocation2TextField.translatesAutoresizingMaskIntoConstraints = false
-        searchButton.translatesAutoresizingMaskIntoConstraints = false
+        clearButton.translatesAutoresizingMaskIntoConstraints = false
         filterButton.translatesAutoresizingMaskIntoConstraints = false
 
         catagory_label.translatesAutoresizingMaskIntoConstraints = false
@@ -228,12 +228,12 @@ extension LocationSelectionView {
             enterLocation2TextField.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -20),
             enterLocation2TextField.heightAnchor.constraint(equalToConstant: 40),
             
-            searchButton.topAnchor.constraint(equalTo: enterLocation2TextField.bottomAnchor, constant: 20),
-            searchButton.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 20),
-            searchButton.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -20),
-            searchButton.heightAnchor.constraint(equalToConstant: 50),
+            clearButton.topAnchor.constraint(equalTo: enterLocation2TextField.bottomAnchor, constant: 20),
+            clearButton.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 20),
+            clearButton.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -20),
+            clearButton.heightAnchor.constraint(equalToConstant: 50),
             
-            filterButton.topAnchor.constraint(equalTo: searchButton.bottomAnchor, constant: 20),
+            filterButton.topAnchor.constraint(equalTo: clearButton.bottomAnchor, constant: 20),
             filterButton.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 20),
             filterButton.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -20),
             filterButton.heightAnchor.constraint(equalToConstant: 50),

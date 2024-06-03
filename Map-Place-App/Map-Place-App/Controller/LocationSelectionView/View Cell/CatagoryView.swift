@@ -101,4 +101,9 @@ extension CategoryView {
 
       // Implement your logic here based on the selected category
     }
+    func clearCheckBox(){
+        for checkbox in self.checkboxes {
+            checkbox.isChecked = false
+        }
+    }
 }

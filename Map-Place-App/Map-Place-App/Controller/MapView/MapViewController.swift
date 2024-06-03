@@ -64,6 +64,11 @@ extension MapViewController : UISearchBarDelegate {
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         _ = UIStoryboard(name: "Main", bundle: nil)
         let searchViewController = LocationSelectionViewController()
+        Lat = self.latitude
+        Long  = self.longitude
+        
+        
+       
 
         self.navigationController?.pushViewController(searchViewController, animated: true)
     }

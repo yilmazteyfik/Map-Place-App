@@ -63,7 +63,7 @@ final class FilterModel {
     }
     
     func clearAll()  {
-        self.categories = []
+        self.categories.removeAll()
         self.initCategories()
         self.key_word = "-1"
         self.distance = -1

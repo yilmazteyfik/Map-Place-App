@@ -63,10 +63,8 @@ extension PlaceListViewModel {
                         isCategorySelected = true
                     }
                     FilterModel.instance.$key_word.sink { keyWord in
-                        // Loop through each likelihood
                         if let types = place.types {
                             for category in selectedCategories {
-                                // Check if the place types contain selected category and the place name contains the keyword
                                 if types.contains(category){
                                     isCategorySelected = true
                                     if let name = place.name?.lowercased() , name.contains(keyWord.lowercased()), keyWord != "-1"{
@@ -193,4 +191,10 @@ extension PlaceListViewModel {
         self.placeList = Array(Set(self.placeList))
     }
   
+}
+extension PlaceListViewModel {
+    func clearAll(){
+        placeList.removeAll()
+        coordinateList.removeAll()
+    }
 }

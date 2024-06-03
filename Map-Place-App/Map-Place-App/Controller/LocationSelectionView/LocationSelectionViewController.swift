@@ -14,6 +14,8 @@ import Combine
 import CoreLocation
 var buttonIndex = 0
 var firstLocation = "-1"
+var Lat : CLLocationDegrees?
+var Long : CLLocationDegrees?
 class LocationSelectionViewController : UIViewController, LocationSelectionViewDelegate{
     // MARK: - Properties
     var stringURL = ""
@@ -27,15 +29,15 @@ class LocationSelectionViewController : UIViewController, LocationSelectionViewD
     
     var mapView: GMSMapView!
     var locationManager = CLLocationManager()
-    var latitude: CLLocationDegrees?
-    var longitude: CLLocationDegrees?
+    var latitude = Lat
+    var longitude = Long
     var zoom: Float = 15
     let locationSelectionView = LocationSelectionView()
     private let viewModel : MapViewModel = MapViewModel.instance
     private var cancelable : Set<AnyCancellable> = []
     private let coreLocationManager : CoreLocationManager = CoreLocationManager.instance
     
-    let searchButton: UIButton = {
+    let clearButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Ara", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -49,6 +51,12 @@ class LocationSelectionViewController : UIViewController, LocationSelectionViewD
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
+    let safeAreaBackgroundView : UIView = {
+        let safeArea = UIView()
+        safeArea.translatesAutoresizingMaskIntoConstraints = false
+        safeArea.backgroundColor = .systemBackground
+        return safeArea
+    }()
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -56,7 +64,7 @@ class LocationSelectionViewController : UIViewController, LocationSelectionViewD
         setupMap()
         style()
         layout()
-        locationSelectionView.searchButton.addTarget(self, action: #selector(searchButtonTapped), for: .touchUpInside)
+        locationSelectionView.clearButton.addTarget(self, action: #selector(clearButtonTapped), for: .touchUpInside)
         locationSelectionView.filterButton.addTarget(self, action: #selector(filterButtonTapped), for: .touchUpInside)
         locationSelectionView.delegate = self
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.backward") , style: .plain, target: self, action: #selector(didTappedBackButton))
@@ -69,14 +77,28 @@ class LocationSelectionViewController : UIViewController, LocationSelectionViewD
 extension LocationSelectionViewController {
     func style(){
         view.addSubview(locationSelectionView)
+        view.addSubview(mapView)
+        view.addSubview(safeAreaBackgroundView)
+        view.sendSubviewToBack(safeAreaBackgroundView)
         locationSelectionView.translatesAutoresizingMaskIntoConstraints = false
+        mapView.translatesAutoresizingMaskIntoConstraints = false
     }
     func layout(){
         NSLayoutConstraint.activate([
+            safeAreaBackgroundView.topAnchor.constraint(equalTo: view.topAnchor),
+            safeAreaBackgroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            safeAreaBackgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            safeAreaBackgroundView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            
+            mapView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            mapView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            mapView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            mapView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.35),
+
             locationSelectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             locationSelectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             locationSelectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            locationSelectionView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.65), // İstediğiniz yüksekliği ayarlayın
+            locationSelectionView.topAnchor.constraint(equalTo: mapView.bottomAnchor),
             
       
         ])
@@ -106,12 +128,18 @@ extension LocationSelectionViewController {
         }.store(in: &cancelable)
     }
     
-    @objc func searchButtonTapped(_ sender: UIButton) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-
-        let searchViewController = storyboard.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController// Replace with your initialization
+    @objc func clearButtonTapped(_ sender: UIButton) {
+        locationSelectionView.enterLocationTextField[0].text = ""
+        locationSelectionView.enterLocationTextField[1].text = ""
         
-        self.navigationController?.pushViewController(searchViewController, animated: true)
+        locationSelectionView.enterLocationTextField[0].placeholder = "Enter Location 1"
+        locationSelectionView.enterLocationTextField[1].placeholder = "Enter Location 1"
+        
+        locationSelectionView.key_word_tex_field.text = ""
+        locationSelectionView.catagoryView.clearCheckBox()
+        self.filterModel.clearAll()
+        viewModel.clearLocations()
+        placeModel.clearAll()
     }
     @objc func filterButtonTapped(_ sender: UIButton) {
         let placeListViewController = PlaceListViewController() // Replace with your initialization
@@ -134,7 +162,6 @@ extension LocationSelectionViewController {
         //viewModel.clearLocations()
     }
     func setPlaces(){
-       
         if isLocationSelected{
             if buttonIndex == 0 {
                 locationSelectionView.enterLocationTextField[buttonIndex].text = locationName
@@ -152,7 +179,6 @@ extension LocationSelectionViewController {
             }else {
                 viewModel.setFirstLocation(value: locationName)
             }
-            
         }
         
     }
@@ -161,16 +187,16 @@ extension LocationSelectionViewController {
 extension LocationSelectionViewController {
     
     private func setupMap() {
-        let camera = GMSCameraPosition.camera(withLatitude:  37.7749, longitude: -122.4194, zoom: zoom)
+        let camera = GMSCameraPosition.camera(withLatitude:  Lat!, longitude: Long!, zoom: zoom)
         mapView = GMSMapView.map(withFrame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height * 0.35), camera: camera)
         mapView?.isMyLocationEnabled = true
         mapView?.settings.myLocationButton = true
         mapView?.settings.rotateGestures = true
         mapView?.settings.zoomGestures = true
-        view = mapView
+        //view = mapView
 
         let marker = GMSMarker()
-        marker.position = CLLocationCoordinate2D(latitude: 37.7749, longitude: -122.4194)
+        marker.position = CLLocationCoordinate2D(latitude: Lat!, longitude: Long!)
         marker.title = "San Francisco"
         marker.snippet = "California, USA"
         marker.map = mapView
