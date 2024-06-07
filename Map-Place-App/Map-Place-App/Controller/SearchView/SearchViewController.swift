@@ -150,13 +150,37 @@ extension SearchViewController : UITableViewDelegate , UITableViewDataSource {
                     
                 }
             case .failure(let error):
-                print(error)
+                print("Error resolving location: \(error.localizedDescription)")
             }
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             if let view = storyboard.instantiateViewController(withIdentifier: "LocationSelectionViewController") as? LocationSelectionViewController{
-                view.isLocationSelected = true
-                view.locationName = place.name
-                print(view.locationName)
+                //view.isLocationSelected = true
+                //view.locationName = place.name
+                if whichTextField[0] {
+                    print(" TEXT 1 OKAY !!!!!")
+                    view.locationSelectionView.enterLocationTextField[0].text = place.name
+                    view.viewModel.setFirstLocation(value: place.name)
+                    firstLocation = place.name
+                    if whichTextField[1]{
+                        view.isLocationSelected = true
+                    }
+                    whichTextField = [false,false]
+                    
+                    
+                    
+                }
+                else if whichTextField[1] {
+                    print(" TEXT 2 OKAY !!!!!")
+                    view.locationSelectionView.enterLocationTextField[1].text = place.name
+                    view.viewModel.setSecondLocation(value: place.name)
+                    secondLocation = place.name
+                    view.isLocationSelected = true
+                    if whichTextField[0]{
+                        view.isLocationSelected = true
+                    }
+                    whichTextField = [false,false]
+
+                }
                 self?.navigationController?.pushViewController(view, animated: true)
             }
         }

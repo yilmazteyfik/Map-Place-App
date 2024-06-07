@@ -52,20 +52,24 @@ final class GooglePlacesManeger{
         }
     }
     
-    public func resolveLocation( for place : Place , comletion: @escaping (Result<CLLocationCoordinate2D, Error>) -> Void){
-        client.fetchPlace(fromPlaceID: place.identifier, placeFields: .coordinate, sessionToken: nil) { GooglePlace, error in
-            guard let googlePlace = GooglePlace, error == nil else{
-                comletion(.failure(PlacesError.failToGetCoordinate))
+    public func resolveLocation(for place: Place, completion: @escaping (Result<CLLocationCoordinate2D, Error>) -> Void) {
+        client.fetchPlace(fromPlaceID: place.identifier, placeFields: .coordinate, sessionToken: nil) { googlePlace, error in
+            if let error = error {
+                print("Error fetching place: \(error.localizedDescription)")
+                completion(.failure(PlacesError.failToGetCoordinate))
+                return
+            }
+            guard let googlePlace = googlePlace else {
+                completion(.failure(PlacesError.failToGetCoordinate))
                 return
             }
             let coordinate = CLLocationCoordinate2D(
                 latitude: googlePlace.coordinate.latitude,
-                longitude:  googlePlace.coordinate.longitude)
+                longitude: googlePlace.coordinate.longitude)
             
-            comletion(.success(coordinate))
+            completion(.success(coordinate))
         }
     }
-    
     func findPlacesBetweenLocations(location1: String, location2: String, completion: @escaping ([GMSPlace]) -> Void) {
         guard let apiKey = ApiManager.apiKey else {
             fatalError("Google Maps API anahtarı eksik veya yanlış konumda")

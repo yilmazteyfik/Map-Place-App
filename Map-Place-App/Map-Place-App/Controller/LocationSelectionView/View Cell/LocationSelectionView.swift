@@ -13,6 +13,7 @@ import UIKit
 
 protocol LocationSelectionViewDelegate: AnyObject {
     func navigateToPlaceListViewController()
+    func navigateToPlaceListViewController1()
 }
 
 
@@ -299,9 +300,13 @@ extension LocationSelectionView : UITextFieldDelegate{
     
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        if textField == enterLocation1TextField || textField == enterLocation2TextField {
+        if textField == enterLocation1TextField {
             delegate?.navigateToPlaceListViewController()
             return false // TextField'ın editlenmesini engellemek için false döndürüyoruz.
+        }
+        else if textField == enterLocation2TextField {
+            delegate?.navigateToPlaceListViewController1()
+            return false 
         }
         return true
     }
