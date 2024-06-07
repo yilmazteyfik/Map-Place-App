@@ -69,12 +69,4 @@ final class MapViewModel {
         return "https://maps.googleapis.com/maps/api/geocode/json?address=\(location_name)&key=\(apiKey)"
     }
     
-    
-    
-    
-   
-    
-    
-    
-    
 }
