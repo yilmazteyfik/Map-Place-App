@@ -135,7 +135,7 @@ extension LocationSelectionViewController {
         locationSelectionView.enterLocationTextField[1].text = ""
         
         locationSelectionView.enterLocationTextField[0].placeholder = "Enter Location 1"
-        locationSelectionView.enterLocationTextField[1].placeholder = "Enter Location 1"
+        locationSelectionView.enterLocationTextField[1].placeholder = "Enter Location 2"
         
         firstLocation = "-1"
         secondLocation = "-1"
