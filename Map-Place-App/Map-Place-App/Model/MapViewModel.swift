@@ -31,9 +31,11 @@ final class MapViewModel {
     func setFirstLocation(value:String)  {
     
         firstLocation = value
-        
+        print("bambam1")
+
         CoreLocationManager.instance.formatLocationName(in: firstLocation!) { locationName in
             let url = self.generateGeocodeUrl(location_name: locationName)
+            print("bambam1")
             
             CoreLocationManager.instance.resolveCoordinates(loca: &(self.firstCoordinate)!, url_string: url)
         }
@@ -44,10 +46,12 @@ final class MapViewModel {
     
     func setSecondLocation(value:String)  {
         secondLocation = value
-       
+        print("bambam1")
+
         CoreLocationManager.instance.formatLocationName(in: secondLocation!) { locationName in
             let url = self.generateGeocodeUrl(location_name: locationName)
-            
+            print("bambam1")
+
             CoreLocationManager.instance.resolveCoordinates(loca: &(self.secondCoordinate)!, url_string: url)
         }
         

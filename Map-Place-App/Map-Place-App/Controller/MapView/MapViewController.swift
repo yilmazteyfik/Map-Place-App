@@ -66,11 +66,9 @@ extension MapViewController : UISearchBarDelegate {
         let searchViewController = LocationSelectionViewController()
         Lat = self.latitude
         Long  = self.longitude
-        
-        
-       
-
         self.navigationController?.pushViewController(searchViewController, animated: true)
+        searchBar.resignFirstResponder()
+
     }
 }
 

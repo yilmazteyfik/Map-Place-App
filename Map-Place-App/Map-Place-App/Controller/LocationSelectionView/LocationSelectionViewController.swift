@@ -14,8 +14,10 @@ import Combine
 import CoreLocation
 var buttonIndex = 0
 var firstLocation = "-1"
+var secondLocation = "-1"
 var Lat : CLLocationDegrees?
 var Long : CLLocationDegrees?
+var whichTextField = Array(repeating: false, count: 2)
 class LocationSelectionViewController : UIViewController, LocationSelectionViewDelegate{
     // MARK: - Properties
     var stringURL = ""
@@ -33,7 +35,7 @@ class LocationSelectionViewController : UIViewController, LocationSelectionViewD
     var longitude = Long
     var zoom: Float = 15
     let locationSelectionView = LocationSelectionView()
-    private let viewModel : MapViewModel = MapViewModel.instance
+    let viewModel : MapViewModel = MapViewModel.instance
     private var cancelable : Set<AnyCancellable> = []
     private let coreLocationManager : CoreLocationManager = CoreLocationManager.instance
     
@@ -135,6 +137,11 @@ extension LocationSelectionViewController {
         locationSelectionView.enterLocationTextField[0].placeholder = "Enter Location 1"
         locationSelectionView.enterLocationTextField[1].placeholder = "Enter Location 1"
         
+        firstLocation = "-1"
+        secondLocation = "-1"
+        whichTextField[0] = false
+        whichTextField[1] = false
+        
         locationSelectionView.key_word_tex_field.text = ""
         locationSelectionView.catagoryView.clearCheckBox()
         self.filterModel.clearAll()
@@ -162,6 +169,42 @@ extension LocationSelectionViewController {
         //viewModel.clearLocations()
     }
     func setPlaces(){
+        if whichTextField[0] && whichTextField [1]{
+            locationSelectionView.enterLocationTextField[0].text = firstLocation
+            locationSelectionView.enterLocationTextField[1].text = secondLocation
+            viewModel.setFirstLocation(value: firstLocation)
+            viewModel.setSecondLocation(value: secondLocation)
+            printLocations()
+
+        }
+        else if isLocationSelected{
+            print("enter")
+            locationSelectionView.enterLocationTextField[0].text = firstLocation
+            locationSelectionView.enterLocationTextField[1].text = secondLocation
+            viewModel.setIsClıckedValue()
+            viewModel.setFirstLocation(value: firstLocation)
+            viewModel.setSecondLocation(value: secondLocation)
+            print("firstLoxation = \(firstLocation)")
+            print("fSecondLoxation = \(secondLocation)")
+
+            printLocations()
+        }
+        
+        else if whichTextField[0] {
+            locationSelectionView.enterLocationTextField[0].text = firstLocation
+            viewModel.setFirstLocation(value: firstLocation)
+            viewModel.setIsClıckedValue()
+            print(whichTextField[0])
+            print(whichTextField[1])
+        }
+        else if whichTextField[1] {
+            locationSelectionView.enterLocationTextField[1].text = secondLocation
+            viewModel.setSecondLocation(value: secondLocation)
+            print(whichTextField[0])
+            print(whichTextField[1])
+        }
+        
+        /*
         if isLocationSelected{
             if buttonIndex == 0 {
                 locationSelectionView.enterLocationTextField[buttonIndex].text = locationName
@@ -179,7 +222,7 @@ extension LocationSelectionViewController {
             }else {
                 viewModel.setFirstLocation(value: locationName)
             }
-        }
+        }*/
         
     }
 }
@@ -274,8 +317,20 @@ extension LocationSelectionViewController{
     func navigateToPlaceListViewController() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let searchViewController = storyboard.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController// Replace with your initialization
+        whichTextField[0] = true
+        //whichTextField[1] = false
+
         self.navigationController?.pushViewController(searchViewController, animated: true)
     }
+    func navigateToPlaceListViewController1() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let searchViewController = storyboard.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController// Replace with your initialization
+        whichTextField[1] = true
+        //whichTextField[0] = false
+
+        self.navigationController?.pushViewController(searchViewController, animated: true)
+    }
+    
 }
 //MARK: - NavBar Funcitons
 extension LocationSelectionViewController {
