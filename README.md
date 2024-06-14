@@ -23,7 +23,7 @@ This project is a mobile application that helps users filter locations such as r
 |:--------------------------------------------:|:--------------------------------------------:|:--------------------------------------------:|
 | *Map View*                                | *Location Selection View*                           | *Search View*                                   |
 
-| ![Screenshot 4](Map-Place-App/Map-Place-App/Assets.xcassets/4.imageset/4.png) | ![Screenshot 5](Map-Place-App/Map-Place-App/Assets.xcassets/5.imageset/5.png) | ![Screenshot 6](Map-Place-App/Map-Place-App/Assets.xcassets/6.imageset/6.png) |
+| ![4](https://github.com/yilmazteyfik/Map-Place-App/assets/76794421/b1383ca1-8afc-4191-b682-4c89978ab039) | !![5](https://github.com/yilmazteyfik/Map-Place-App/assets/76794421/f254e655-1c1a-4572-bfc3-f81e8663949e) | ![6](https://github.com/yilmazteyfik/Map-Place-App/assets/76794421/8818462e-e721-4c1f-b818-a59d95dd0576)|
 |:--------------------------------------------:|:--------------------------------------------:|:--------------------------------------------:|
 | *Place List View*                           | *Place Detail View*                               | *Map View (Polyline)*
 
