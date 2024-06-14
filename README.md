@@ -8,8 +8,7 @@ This project is a mobile application that helps users filter locations such as r
 - [Installation](#installation)
 - [Usage](#usage)
 - [Contributing](#contributing)
-- [License](#license)
-- [Contact](#contact)
+
 
 ## Features
 
@@ -20,7 +19,7 @@ This project is a mobile application that helps users filter locations such as r
 
 ## Screenshots
 
-| ![Screenshot 1](Map-Place-App/Map-Place-App/Assets.xcassets/1.imageset/1.png) | ![Screenshot 2](Map-Place-App/Map-Place-App/Assets.xcassets/2.imageset/2.png) | ![Screenshot 3](Map-Place-App/Map-Place-App/Assets.xcassets/3.imageset/3.png) |
+![1](https://github.com/yilmazteyfik/Map-Place-App/assets/76794421/ca6bdd4a-d113-4deb-900f-2687256e9eea) | ![2](https://github.com/yilmazteyfik/Map-Place-App/assets/76794421/fb4582b2-98da-4539-8cc3-21a149a36b0c) | ![3](https://github.com/yilmazteyfik/Map-Place-App/assets/76794421/2ef206f3-c7a9-4c8d-b75b-7884ec763e72) |
 |:--------------------------------------------:|:--------------------------------------------:|:--------------------------------------------:|
 | *Map View*                                | *Location Selection View*                           | *Search View*                                   |
 
@@ -60,4 +59,7 @@ To use the app, follow these steps:
 4. View the filtered locations on the map.
 5. Tap on a location to see more details, including ratings, reviews, and contact information.
 
+## Contributing
+- https://github.com/BartugKaan
+- https://github.com/osmancan23
 
